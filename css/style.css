@@ -1,14 +1,6 @@
 /* need to change:
-    no-link to noLink
-    add-book-form to addBookForm
-    abstract-lable to abstractLable
-    asbt-con to abstractArea
-    abstract-lable to abstractLable 
-    book-placeholder to bookPlaceholder
-    page-links to pageLinks
-    setting-links to settingLinks
-    book-details to bookDetails
-    form-tag to formTag
+     
+
     */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
@@ -126,7 +118,7 @@ main {
     #innerHamburger, #imageAreaMobile, #nameAreaMobile, #tabsSection{
         display: none!important;
     }
-    #book-details{
+    #bookDetails{
         flex-direction: row;
     }
     #imageAreaDesktop, #abstractAreaDesktop, #bookMeta{
@@ -142,23 +134,23 @@ main {
 .round-input{
     border-radius: 20px;
 }
-.no-link{
+.noLink{
     color: black;
 }
 .text-right{
     text-align: right;
 }
-.add-book-form{
+.addBookForm{
     flex-direction: column;
     display: flex;
     width: 100%;
     height: calc(100vh - 32px - 40px);
 }
-.add-book-form h1{
+.addBookForm h1{
     display: flex;
     justify-content: center;
 }
-#abstract-lable{
+#abstractLable{
     margin-top: 6px;
 }
 .column{
@@ -167,7 +159,7 @@ main {
     gap: 20px;
     height: 40%;
 }
-#asbt-con{
+#abstractArea{
     display: flex;
     flex-direction: row;
     width: 70%;
