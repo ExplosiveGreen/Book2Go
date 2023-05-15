@@ -103,7 +103,7 @@ main {
         align-items: center;
         flex-direction: column;
     }
-    #imageAreaDesktop, #abstractAreaDesktop, #bookMeta{
+    #imageAreaDesktop, #abstractAreaDesktop, #bookMeta, #breadcrumps{
         display: none!important;
     }
 }
