@@ -1,0 +1,156 @@
+<!--the current file-->
+<!-- link to check php file
+http://localhost/Book2Go/php/addedBook.php -->
+<!--all changes copy to project file in xampp-->
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <title>add book</title>
+</head>
+
+<body id="add-book">
+    <header class="d-flex justify-content-between">
+        <section id="iconsArea">
+            <a href="#" id="locationIcon"></a>
+            <a href="#" id="gridIcon"></a>
+        </section>
+        <section id="searchArea">
+            <img id="searchIcon" src="images/search.png">
+            <input type="search" class="form-control round-input" id="search" placeholder="חפש ספר">
+        </section>
+        <section id="navigationArea">
+            <img role="button" id="hamburger" src="images/menu.png" data-bs-target="#hamburgerNavigation"
+                aria-expanded="false" aria-controls="hamburgerNavigation">
+            <a href="index.html" id="logo"></a>
+        </section>
+    </header>
+    <div id="wrapper" class="d-flex flex-row">
+        <section class="add-book-form container p-0">
+            <nav id="breadcrumps" class="d-flex flex-row justify-content-end">
+                <a href="#">הוספת ספר</a>&#60;
+                <a href="#" class="no-link">עמוד הבית</a>
+            </nav>
+            <h1 class="text-center mb-5">הוספת ספר</h1>
+            <main>
+                <form action="php/addedBook.php" method="get">
+                    <div class="column">
+                        <div id="asbt-con">
+                            <textarea class="form-control" id="abstract" name="abstract"
+                                placeholder="הכנס תקציר כאן"></textarea>
+                            &nbsp;
+                            <label for="abstract" id="abstract-lable" class="form-label">:תקציר</label>
+                        </div>
+                        <img id="book-placeholder" src="images/image-placeholder-1.png" alt="book-placeholder">
+                    </div>
+                    <h2>פרטי הספר</h2>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="col-auto">
+                                    <lable for="publishName" id="publishNameLable" class="form-label">:הוצאה</lable>
+                                    <input type="text" class="form-control" id="publishName" name="publishName" value=""
+                                        placeholder="שם הוצאה" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-auto">
+                                    <label for="bookName" id="nameBookLable" class="form-label">:שם הספר</label>
+                                    <input type="text" class="form-control" id="bookName" name="bookName" value=""
+                                        placeholder="שם הספר" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="col-auto">
+                                    <lable for="publicationDate" id="publicationDateLable" class="form-label">:תאריך
+                                        הוצאה</lable>
+                                    <input type="text" class="form-control" id="publicationDate" name="publicationDate"
+                                        value="" placeholder="הכנס חודש ושנת הוצאה" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-auto">
+                                    <label for="authorName" id="authorNameLable" class="form-label">:שם הסופר</label>
+                                    <input type="text" class="form-control" id="authorName" name="authorName" value=""
+                                        placeholder="שם הסופר" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="col-auto">
+                                    <label id="categoryLable">:קטגוריה</label>
+                                    <select class="form-select" aria-label="Default select example" name="category"
+                                        required>
+                                        <option selected>בחר קטגוריה</option>
+                                        <option value="פנטזיה">פנטזיה</option>
+                                        <option value="מדע בדיוני">מדע בדיוני</option>
+                                        <option value="רומן רומנטי">רומן רומנטי</option>
+                                        <option value="ריאליסטי">ריאליסטי</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-auto">
+                                    <label for="translatorName" id="translatorNameLabel" class="form-label">:שם
+                                        המתרגם</label>
+                                    <input type="text" class="form-control" id="translatorName" name="translatorName"
+                                        value="" placeholder="שם המתרגם">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="col-auto">
+                                    <label id="stateLable">:מצב</label>
+                                    <select class="form-select" aria-label="Default select example" name="state"
+                                        required>
+                                        <option selected>בחר מצב</option>
+                                        <option value="חדש">חדש</option>
+                                        <option value="קריא">קריא</option>
+                                        <option value="פגום">פגום</option>
+                                        <option value="בלוי">בלוי</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <input type="submit" class="btn btn-primary" id="save" value="שמירה">
+                    </div>
+                </form>
+            </main>
+        </section>
+        <div id="hamburgerNavigation" class="w-50">
+            <aside class="d-flex flex-column justify-content-between h-100">
+                <section>
+                    <section class="align-items-end">
+                        <img role="button" id="innerHamburger" src="images/menu.png" data-bs-dismiss="offcanvas">
+                    </section>
+                    <a href="#" class="btn  btn-primary">ghfghfg</a>
+                    <a href="#" class="btn  btn-primary">ghfghfg</a>
+                    <a href="#" class="btn  btn-primary">ghfghfg</a>
+                </section>
+                <section>
+                    <a href="#" class="btn  btn-primary">ghfghfg</a>
+                    <a href="#" class="btn  btn-primary">ghfghfg</a>
+                    <a href="#" class="btn  btn-primary">ghfghfg</a>
+                </section>
+            </aside>
+        </div>
+    </div>
+</body>
+
+</html>

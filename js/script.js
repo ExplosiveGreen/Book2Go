@@ -16,6 +16,6 @@ function handaleHamburger(size) {
         $('#hamburger').removeAttr('data-bs-toggle');
         $('#hamburger').attr('data-bs-toggle','collapse');
         $('#hamburgerNavigation').removeAttr('class');
-        $('#hamburgerNavigation').attr('class','w-50 collapse show');
+        $('#hamburgerNavigation').attr('class','w-30 collapse show');
     }
 }

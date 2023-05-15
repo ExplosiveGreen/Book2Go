@@ -1,3 +1,15 @@
+/* need to change:
+    no-link to noLink
+    add-book-form to addBookForm
+    abstract-lable to abstractLable
+    asbt-con to abstractArea
+    abstract-lable to abstractLable 
+    book-placeholder to bookPlaceholder
+    page-links to pageLinks
+    setting-links to settingLinks
+    book-details to bookDetails
+    form-tag to formTag
+    */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
@@ -26,6 +38,9 @@ header section {
     width: 40px;
     background-size: contain;
     background-repeat: no-repeat;
+}
+#search{
+    text-align: center;
 }
 #addBook{
     background-image: url(../images/add.svg);
@@ -64,7 +79,7 @@ aside img {
     height: 24px;
 }
 nav {
-    gap:20px;
+    gap:10px;
     margin-right: 10px;
 }
 #wrapper{
@@ -131,6 +146,71 @@ main {
     color: black;
 }
 .text-right{
+    text-align: right;
+}
+.add-book-form{
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 32px - 40px);
+}
+.add-book-form h1{
+    display: flex;
+    justify-content: center;
+}
+#abstract-lable{
+    margin-top: 6px;
+}
+.column{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    height: 40%;
+}
+#asbt-con{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}
+h2{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+.col{
+    margin-bottom: 5px;
+}
+#nameBookLable,#authorNameLable,#publishNameLable,#translatorNameLabel
+,#publicationDateLable,#categoryLable,#stateLable{
+    display: flex;
+    justify-content: flex-end;
+}
+#categoryLable,#stateLable{
+    margin-bottom: 0.5rem;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-bottom: 5px;
+}
+#save{
+    margin-top: 30px;
+    width: 150px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    border: none;
+}
+.btn-primary{
+    border: none;
+}
+#save:hover,.btn-primary:hover{
+    background-color: #5BC0DE;
+    color: black;
+}
+
+option,#abstract,#bookName,#authorName,#translatorName,#publishName
+,#publicationDate{
     text-align: right;
 }
 
