@@ -22,7 +22,8 @@ function handaleHamburger(size) {
 
 const form = document.getElementById("bookForm");
 const saveButton = document.getElementById("save");
-form.addEventListener("submit", function(event) {
+
+form && form.addEventListener("submit", function(event) {
     event.preventDefault();
     const publicationDateInput = document.getElementById("publicationDate");
     const selects = document.getElementsByClassName("form-select");
