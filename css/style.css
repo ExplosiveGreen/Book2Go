@@ -130,4 +130,7 @@ main {
 .no-link{
     color: black;
 }
+.text-right{
+    text-align: right;
+}
 
