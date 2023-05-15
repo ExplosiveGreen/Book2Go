@@ -15,7 +15,6 @@ http://localhost/Book2Go/php/addedBook.php -->
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
                 crossorigin="anonymous"></script>
             <link rel="stylesheet" href="css/style.css">
-            <script src="js/script.js"></script>
             <title>add book</title>
         </head>
         <body>
@@ -30,7 +29,7 @@ http://localhost/Book2Go/php/addedBook.php -->
                 </section>
                 <section id="navigationArea">
                     <img role="button" id="hamburger" src="images/menu.png" data-bs-target="#hamburgerNavigation"
-                        aria-expanded="false" aria-controls="hamburgerNavigation">
+                    aria-expanded="false" aria-controls="hamburgerNavigation">
                     <a href="index.html" id="logo"></a>
                 </section>
             </header>
@@ -42,11 +41,10 @@ http://localhost/Book2Go/php/addedBook.php -->
                     </nav>
                     <h1 class="text-center mb-5">הוספת ספר</h1>
                     <main>
-                        <form action="php/addedBook.php" method="get">
+                        <form id="bookForm" action="php/addedBook.php" method="get" autocomplete="on">
                             <div class="column">
                                 <div id="abstractArea">
-                                    <textarea class="form-control" id="abstract" name="abstract"
-                                        placeholder="הכנס תקציר כאן"></textarea>
+                                    <textarea class="form-control" id="abstract" name="abstract" placeholder="הכנס תקציר כאן" required></textarea>
                                     &nbsp;
                                     <label for="abstract" id="abstractLable" class="form-label">:תקציר</label>
                                 </div>
@@ -59,31 +57,30 @@ http://localhost/Book2Go/php/addedBook.php -->
                                         <div class="col-auto">
                                             <lable for="publishName" id="publishNameLable" class="form-label">:הוצאה</lable>
                                             <input type="text" class="form-control" id="publishName" name="publishName" value=""
-                                                placeholder="שם הוצאה" required>
+                                            placeholder="שם הוצאה" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="col-auto">
                                             <label for="bookName" id="nameBookLable" class="form-label">:שם הספר</label>
                                             <input type="text" class="form-control" id="bookName" name="bookName" value=""
-                                                placeholder="שם הספר" required>
+                                            placeholder="שם הספר" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="col-auto">
-                                            <lable for="publicationDate" id="publicationDateLable" class="form-label">:תאריך
-                                                הוצאה</lable>
+                                            <lable for="publicationDate" id="publicationDateLable" class="form-label">:תאריך הוצאה</lable>
                                             <input type="text" class="form-control" id="publicationDate" name="publicationDate"
-                                                value="" placeholder="הכנס חודש ושנת הוצאה" required>
+                                            value="" placeholder="הכנס חודש ושנת הוצאה" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="col-auto">
                                             <label for="authorName" id="authorNameLable" class="form-label">:שם הסופר</label>
                                             <input type="text" class="form-control" id="authorName" name="authorName" value=""
-                                                placeholder="שם הסופר" required>
+                                            placeholder="שם הסופר" required>
                                         </div>
                                     </div>
                                 </div>
@@ -92,21 +89,21 @@ http://localhost/Book2Go/php/addedBook.php -->
                                         <div class="col-auto">
                                             <label id="categoryLable">:קטגוריה</label>
                                             <select class="form-select" aria-label="Default select example" name="category"
-                                                required>
-                                                <option>בחר קטגוריה</option>
-                                                <option value="פנטזיה">פנטזיה</option>
-                                                <option value="מדע בדיוני">מדע בדיוני</option>
-                                                <option value="רומן רומנטי">רומן רומנטי</option>
-                                                <option value="ריאליסטי">ריאליסטי</option>
-                                            </select>
-                                        </div>
+                                            required>
+                                            <option selected value="-1">בחר קטגוריה</option>
+                                            <option value="פנטזיה">פנטזיה</option>
+                                            <option value="מדע בדיוני">מדע בדיוני</option>
+                                            <option value="רומן רומנטי">רומן רומנטי</option>
+                                            <option value="ריאליסטי">ריאליסטי</option>
+                                        </select>
                                     </div>
-                                    <div class="col">
-                                        <div class="col-auto">
-                                            <label for="translatorName" id="translatorNameLabel" class="form-label">:שם
-                                                המתרגם</label>
+                                </div>
+                                <div class="col">
+                                    <div class="col-auto">
+                                        <label for="translatorName" id="translatorNameLabel" class="form-label">:שם
+                                            המתרגם</label>
                                             <input type="text" class="form-control" id="translatorName" name="translatorName"
-                                                value="" placeholder="שם המתרגם">
+                                            value="" placeholder="שם המתרגם">
                                         </div>
                                     </div>
                                 </div>
@@ -115,22 +112,24 @@ http://localhost/Book2Go/php/addedBook.php -->
                                         <div class="col-auto">
                                             <label id="stateLable">:מצב</label>
                                             <select class="form-select" aria-label="Default select example" name="state"
-                                                required>
-                                                <option>בחר מצב</option>
-                                                <option value="חדש">חדש</option>
-                                                <option value="קריא">קריא</option>
-                                                <option value="פגום">פגום</option>
-                                                <option value="בלוי">בלוי</option>
-                                            </select>
-                                        </div>
+                                            required>
+                                            <option selected value="-1">בחר מצב</option>
+                                            <option value="חדש">חדש</option>
+                                            <option value="קריא">קריא</option>
+                                            <option value="פגום">פגום</option>
+                                            <option value="בלוי">בלוי</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="buttons">
-                                <input type="submit" class="btn btn-primary" id="save" value="שמירה">
-                            </div>
-                        </form>
-                    </main>
+                        </div>
+                        <div id="publicationDateError" class="error-message text-danger d-flex flex-column align-items-center"></div>
+                        <div class="buttons">
+                            <input type="submit" class="btn btn-primary" id="save" value="שמירה">
+                        </div>
+                    </form>
+                    <script src="js/script.js"></script>
+                </main>
                 </section>
                 <div id="hamburgerNavigation" class="w-50">
                     <aside class="d-flex flex-column justify-content-between h-100">
