@@ -10,12 +10,12 @@ function handaleHamburger(size) {
         $('#hamburger').removeAttr('data-bs-toggle');
         $('#hamburger').attr('data-bs-toggle','offcanvas');
         $('#hamburgerNavigation').removeAttr('class');
-        $('#hamburgerNavigation').attr('class','w-50 offcanvas-end offcanvas');
+        $('#hamburgerNavigation').attr('class','w-50 h-50 offcanvas-end offcanvas');
     }
     else {
         $('#hamburger').removeAttr('data-bs-toggle');
         $('#hamburger').attr('data-bs-toggle','collapse');
         $('#hamburgerNavigation').removeAttr('class');
-        $('#hamburgerNavigation').attr('class','w-30 collapse show');
+        $('#hamburgerNavigation').attr('class','w30 hv50 collapse show');
     }
 }

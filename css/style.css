@@ -64,11 +64,19 @@ header section {
 aside section {
     display: flex;
     flex-direction: column;
-    gap:5px;
 }
 aside img {
     width: 24px;
     height: 24px;
+}
+aside a {
+    border-top: gray solid 1px!important;
+    border-bottom: gray solid 1px!important;
+    border-radius: 0!important;
+    padding-right: 0!important;
+}
+aside a img {
+    opacity: 0.5;
 }
 nav {
     gap:10px;
@@ -125,20 +133,28 @@ main {
         display: flex!important;
     }
 }
-.align-hebrew-end *{
+.alignHebrewEnd *{
     text-align: right;
 }
-.w-30{
+.w30{
     width: 30%;
 }
-.round-input{
+.roundInput{
     border-radius: 20px;
 }
 .noLink{
     color: black;
 }
-.text-right{
+.textRight{
     text-align: right;
+}
+.hv50{
+    height: 50vh!important;
+}
+.profilePic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
 }
 .addBookForm{
     flex-direction: column;
