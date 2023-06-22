@@ -17,6 +17,9 @@ header{
     height: 32px;
     background-color: #5BC0DE;
 }
+input[type="file"]{
+    display: none;
+}
 header section {
     display: flex;
 }
@@ -101,6 +104,9 @@ main {
 #nameAreaMobile{
     align-items: center!important;
 }
+#imageAreaDesktop{
+    gap: 10px;
+}
 @media screen and (max-width: 1000px){
     #innerHamburger, #imageAreaMobile, #nameAreaMobile, #tabsSection{
         display: flex!important;
@@ -170,10 +176,17 @@ main {
     gap: 20px;
     height: 40%;
 }
+#bookPlaceholder{
+    background-image: attr(dataImage);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 70%;
+
+}
 #abstractArea{
     display: flex;
     flex-direction: row;
-    width: 70%;
+    width: 100%;
 }
 h2{
     display: flex;

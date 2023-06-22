@@ -21,7 +21,7 @@
                 </section>
                 <section id="searchArea">
                     <img id="searchIcon" src="images/search.png" alt="search icon">
-                    <input type="search" class="form-control round-input" id="search" placeholder="חפש ספר">
+                    <input type="search" class="form-control roundInput" id="search" placeholder="חפש ספר">
                 </section>
                 <section id="navigationArea">
                     <img role="button" id="hamburger" src="images/menu.png" data-bs-target="#hamburgerNavigation"
@@ -33,21 +33,27 @@
                 <section class="addBookForm  container p-0">
                     <nav id="breadcrumps" class="d-flex flex-row justify-content-end">
                         <a href="#">הוספת ספר</a>&#60;
-                        <a href="#" class="noLink ">עמוד הבית</a>
+                        <a href="index.html" class="noLink ">עמוד הבית</a>
                     </nav>
                     <h1 class="text-center mb-5">הוספת ספר</h1>
                     <main>
                         <form id="bookForm" action="php/addedBook.php" method="get" autocomplete="on">
-                            <div class="column">
-                                <div id="abstractArea">
+                            <div class="d-flex flex-column justify-content-center">
+                                <div id="abstractArea" class="h-50">
                                     <textarea class="form-control" id="abstract" name="abstract" placeholder="הכנס תקציר כאן" required></textarea>
                                     &nbsp;
                                     <label for="abstract" id="abstractLable" class="form-label">:תקציר</label>
                                 </div>
-                                <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder">
+                                <!-- <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> -->
+                                <div class="d-flex flex-column">
+                                    <input type="file" id="bookImage" name="bookImage" accept="image/*" required>
+                                    <label  for="bookImage" class="justify-content-center d-flex">
+                                        <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> 
+                                    </label>
+                                </div>
                             </div>
-                            <h2>פרטי הספר</h2>
-                            <div class="container-fluid">
+                            <h2 class="d-none">פרטי הספר</h2>
+                            <div class="container-fluid d-none">
                                 <div class="row">
                                     <div class="col">
                                         <div class="col-auto">
