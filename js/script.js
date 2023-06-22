@@ -10,7 +10,7 @@ function handaleHamburger(size) {
         $('#hamburger').removeAttr('data-bs-toggle');
         $('#hamburger').attr('data-bs-toggle','offcanvas');
         $('#hamburgerNavigation').removeAttr('class');
-        $('#hamburgerNavigation').attr('class','w-50 h-50 offcanvas-end offcanvas');
+        $('#hamburgerNavigation').attr('class','w-50 hv65 offcanvas-end offcanvas');
     }
     else {
         $('#hamburger').removeAttr('data-bs-toggle');

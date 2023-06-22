@@ -29,6 +29,9 @@ header section {
     background-size: contain;
     background-repeat: no-repeat;
 }
+#searchArea{
+    gap: 5px;
+}
 #search{
     text-align: center;
 }
@@ -58,6 +61,9 @@ header section {
 }
 #hamburgerNavigation {
     float: right;
+}
+aside{
+    height: 60vh;
 }
 aside section {
     display: flex;
@@ -92,8 +98,7 @@ main {
     height: 24px;
 }
 #actionArea{
-    margin-left: 69px;
-    gap: 10px;
+    gap: 15px;
 }
 #bookDetails{
     gap: 10px;
@@ -108,6 +113,9 @@ main {
     gap: 10px;
 }
 @media screen and (max-width: 1000px){
+    #search {
+        width: 35vw;
+    }
     #innerHamburger, #imageAreaMobile, #nameAreaMobile, #tabsSection{
         display: flex!important;
     }
@@ -229,4 +237,9 @@ option,#abstract,#bookName,#authorName,#translatorName,#publishName
 ,#publicationDate{
     text-align: right;
 }
-
+.pad-35{
+    padding-top: 35px;
+}
+.hv65{
+    height: 65vh;
+}
