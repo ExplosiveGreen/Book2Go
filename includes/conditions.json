@@ -1,0 +1,7 @@
+[
+    {"condition_id": 1, "condition_name": "New"},
+    {"condition_id": 2, "condition_name": "Like New"},
+    {"condition_id": 3, "condition_name": "Very Good"},
+    {"condition_id": 4, "condition_name": "Good"},
+    {"condition_id": 5, "condition_name": "Acceptable"}
+]

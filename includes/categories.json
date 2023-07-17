@@ -1,0 +1,22 @@
+[
+    {"cat_id": 1, "cat_name": "fiction"},
+    {"cat_id": 2, "cat_name": "non-fiction"},
+    {"cat_id": 3, "cat_name": "mystery"},
+    {"cat_id": 4, "cat_name": "romance"},
+    {"cat_id": 5, "cat_name": "science fiction"},
+    {"cat_id": 6, "cat_name": "fantasy"},
+    {"cat_id": 7, "cat_name": "biography"},
+    {"cat_id": 8, "cat_name": "history"},
+    {"cat_id": 9, "cat_name": "self-help"},
+    {"cat_id": 10, "cat_name": "thriller"},
+    {"cat_id": 11, "cat_name": "horror"},
+    {"cat_id": 12, "cat_name": "adventure"},
+    {"cat_id": 13, "cat_name": "business"},
+    {"cat_id": 14, "cat_name": "cookbooks"},
+    {"cat_id": 15, "cat_name": "poetry"},
+    {"cat_id": 16, "cat_name": "travel"},
+    {"cat_id": 17, "cat_name": "art"},
+    {"cat_id": 18, "cat_name": "science"},
+    {"cat_id": 19, "cat_name": "philosophy"},
+    {"cat_id": 20, "cat_name": "religion"}
+]
