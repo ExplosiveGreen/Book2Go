@@ -1,6 +1,7 @@
 [
-    {"condition_id": 1, "condition_name": "חדש"},
-    {"condition_id": 2, "condition_name": "קריא"},
-    {"condition_id": 3, "condition_name": "פגום"},
-    {"condition_id": 4, "condition_name": "בלוי"}
+    {"condition_id": 1, "condition_name": "חדש","reported_typed":["librarian"]},
+    {"condition_id": 2, "condition_name": "קריא","reported_typed":["librarian"]},
+    {"condition_id": 3, "condition_name": "פגום","reported_typed":["librarian","reader"]},
+    {"condition_id": 4, "condition_name": "בלוי","reported_typed":["librarian"]},
+    {"condition_id": 5, "condition_name": "חסר","reported_typed":["librarian","reader"]}
 ]
