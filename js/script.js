@@ -27,6 +27,14 @@ fetch('data/categories.json')
         .forEach(card => card.innerText = category['cat_name']);
     });
 });
+fetch('data/stations_status.json')
+.then(response => response.json())
+.then(data => {
+    data.forEach(category => {
+        document.querySelectorAll(`p[bs-station="${category['status_id']}"]`)
+        .forEach(card => card.innerText = category['status_name']);
+    });
+});
 const form = document.getElementById("bookForm");
 const saveButton = document.getElementById("save");
 

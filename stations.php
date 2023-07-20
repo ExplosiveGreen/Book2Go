@@ -6,7 +6,7 @@ if (empty($_SESSION["user_id"])) {
     header('Location: login.php');
 }
 
-$query = "SELECT * FROM tbl_218_books";
+$query = "SELECT * FROM tbl_218_stations";
 $result = mysqli_query($connection, $query);
 if (!$result) {
     die("DB query failed.");
@@ -48,11 +48,11 @@ if (!$result) {
             <div class="d-flex flex-wrap mt-2 gap-3">
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<a href='book.php?book_id=" . $row["book_id"] . "' bs-category='".$row["category_id"]."' class='card justify-content-center'>";
+                    echo "<a href='book.php?book_id=" . $row["station_id"] . "' bs-station='".$row["station_status_id"]."' class='card justify-content-center'>";
                     echo "<div class='card-body d-flex flex-column align-items-center'>";
-                    echo "<img class='card-image-eop' src='" . $row["img"] . "' title='" . $row["book_name"] . "' alt='" . $row["book_name"] . "'>";
-                    echo "<p class='card-title'>" . $row["book_name"] . "</p>";
-                    echo "<p class='card-subtitle' bs-category=" . $row["category_id"] . "></p>";
+                    echo "<p class='card-subtitle' bs-station=" . $row["station_name"] . "></p>";
+                    echo "<p class='card-subtitle' bs-station=" . $row["station_status_id"] . "></p>";
+                    echo "<p class='card-title'>" . $row["location"] . "</p>";
                     echo "</div>";
                     echo "</a>";
                 }
