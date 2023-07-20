@@ -27,12 +27,12 @@ if (empty($_SESSION["user_id"])) {
 <body>
     <header class="d-flex justify-content-between">
         <a href="index.php" id="logo"></a>
-        <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
+        <img role="button" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
             data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
     </header>
     <main class="d-flex">
         <section class="flex-column d-flex w-100">
-            <nav id="breadcrumps" class="d-flex justify-content-end flex-row">
+            <nav class="d-flex justify-content-end flex-row">
                 <a href="#">פרטי ספר</a>&#60;
                 <a href="index.php" class="noLink">עמוד הבית</a>
             </nav>
@@ -77,15 +77,15 @@ if (empty($_SESSION["user_id"])) {
                 <section id="tabsSection">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link" id="bookInfoTab" data-bs-toggle="tab" href="#bookInfo" role="tab"
+                            <a class="nav-link" data-bs-toggle="tab" href="#bookInfo" role="tab"
                                 aria-controls="bookInfo" aria-selected="false">עוד על הספר</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" id="abstractTab" data-bs-toggle="tab" href="#abstractAreaMobile"
+                            <a class="nav-link active" data-bs-toggle="tab" href="#abstractAreaMobile"
                                 role="tab" aria-controls="abstractAreaMobile" aria-selected="true">תקציר</a>
                         </li>
                     </ul>
-                    <section id="tabsContent" class="tab-content">
+                    <section class="tab-content">
                         <section id="bookInfo" role="tabpanel" aria-labelledby="bookInfoTab" class="tab-pane fade">
                             <section class="d-flex flex-column alignHebrewEnd">
                                 <span>תרגום: חנה בן צבי גורן</span>

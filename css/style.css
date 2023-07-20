@@ -154,7 +154,7 @@ main {
         align-items: center;
         flex-direction: column;
     }
-    #imageAreaDesktop, #abstractAreaDesktop, #bookMeta, #breadcrumps{
+    #imageAreaDesktop, #abstractAreaDesktop, #bookMeta, nav{
         display: none!important;
     }
 }

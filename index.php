@@ -35,7 +35,7 @@ if (!$result) {
 <body>
     <header class="d-flex justify-content-between">
         <a href="index.php" id="logo"></a>
-        <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
+        <img role="button" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
             data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
     </header>
     <main class="w-100 d-flex">

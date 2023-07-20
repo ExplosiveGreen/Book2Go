@@ -26,12 +26,12 @@ if (empty($_SESSION["user_id"])) {
 <body>
     <header class="d-flex justify-content-between">
         <a href="index.php" id="logo"></a>
-        <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
+        <img role="button" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
             data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
     </header>
     <div id="wrapper" class="d-flex flex-row">
         <section class="addBookForm  container p-0">
-            <nav id="breadcrumps" class="d-flex flex-row justify-content-end">
+            <nav class="d-flex flex-row justify-content-end">
                 <a href="#">הוספת ספר</a>&#60;
                 <a href="index.php" class="noLink ">עמוד הבית</a>
             </nav>
@@ -40,7 +40,7 @@ if (empty($_SESSION["user_id"])) {
                 <form id="bookForm" action="addedBook.php" method="get" autocomplete="on">
                     <div id='upperAddSection' class="d-flex flex-column justify-content-center gap-4">
                         <div id="abstractArea">
-                            <textarea class="form-control textRight" id="abstract" name="abstract" placeholder="הכנס תקציר כאן"
+                            <textarea class="form-control textRight" name="abstract" placeholder="הכנס תקציר כאן"
                                 required></textarea>
                             &nbsp;
                             <label for="abstract" class="form-label">:תקציר</label>
