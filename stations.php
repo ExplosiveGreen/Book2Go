@@ -48,9 +48,10 @@ if (!$result) {
             <div class="d-flex flex-wrap mt-2 gap-3">
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<a href='book.php?book_id=" . $row["station_id"] . "' bs-station='".$row["station_status_id"]."' class='card justify-content-center'>";
+                    echo "<a href='station.php?station_id=" . $row["station_id"] . "'class='card justify-content-center'>";
                     echo "<div class='card-body d-flex flex-column align-items-center'>";
-                    echo "<p class='card-subtitle' bs-station=" . $row["station_name"] . "></p>";
+                    echo "<p class='card-subtitle'>" . $row["station_name"] . "</p>";
+                    echo "<img class='card-image-eop' src='" . $row["station_img"] . "' title='" . $row["station_name"] . "' alt='" . $row["station_name"] . "'>";
                     echo "<p class='card-subtitle' bs-station=" . $row["station_status_id"] . "></p>";
                     echo "<p class='card-title'>" . $row["location"] . "</p>";
                     echo "</div>";
