@@ -99,6 +99,9 @@ if (!empty($_GET["book_id"])) {
                             if($_SESSION["user_type"] == 'reader'){
                                 echo '<a id="reserveIcon" href="#"></a>';
                             } 
+                            if($_SESSION["user_type"] == 'librarian'){
+                                echo '<a id="deleteIcon" href="deleteBook.php?book_id="'.$row['book_id'].'"></a>';
+                            }
                             echo '</div>';
                         ?>
                     </section>

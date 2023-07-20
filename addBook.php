@@ -5,6 +5,9 @@ session_start();
 if (empty($_SESSION["user_id"])) {
     header('Location: login.php');
 }
+if (empty($_GET["book_id"]) && $_SESSION["user_type"] == 'reader') {
+    header('Location: index.php');
+}
 $data = [
     "book_id" => -1,
     "book_name" => "",
@@ -29,20 +32,20 @@ if(!empty($_GET["book_id"])) {
 }
 if(isset($_POST["condition"]) && !empty($_POST["condition"] > 0)) {
     echo var_dump($_POST);
-    $book_id = $_POST["book_id"] || $data['book_id'];
-    $book_name = $_POST["bookName"] || $data['book_name'];
-    $author = $_POST["authorName"] || $data['author'];
-    $abstract = $_POST["abstract"] || $data['abstract'];
-    $translate = $_POST["translatorName"] || $data['translate'];
-    $publisher = $_POST["publishName"] || $data['publisher'];
-    $publish_date = $_POST["publicationDate"] || $data['publish_date'];
-    $category_id = $_POST["category"] || $data['category_id'];
-    $condition_id = $_POST["condition"] || $data['condition_id'];
-    $img = $_POST["bookImage"] || $data['img'];
+    $book_id = $_POST["book_id"] ? $_POST["book_id"] : $data['book_id'];
+    $book_name = $_POST["bookName"] ? $_POST["bookName"] : $data['book_name'];
+    $author = $_POST["authorName"] ? $_POST["authorName"] : $data['author'];
+    $abstract = $_POST["abstract"] ? $_POST["abstract"] : $data['abstract'];
+    $translate = $_POST["translatorName"] ? $_POST["translatorName"] : $data['translate'];
+    $publisher = $_POST["publishName"] ? $_POST["publishName"] : $data['publisher'];
+    $publish_date = $_POST["publicationDate"] ? $_POST["publicationDate"] : $data['publish_date'];
+    $category_id = $_POST["category"] ? $_POST["category"] : $data['category_id'];
+    $condition_id = $_POST["condition"] ? $_POST["condition"] : $data['condition_id'];
+    $img = $_POST["bookImage"] ? $_POST["bookImage"] : $data['img'];
     if($book_id > 0){
-        $query = "UPDATE TABLE tbl_218_books SET book_name='$book_name', author='$author', abstract='$abstract', translate='$translate', publisher='$publisher', publish_date='$publish_date', category_id='$category_id', condition_id='$condition_id',img='$img' WHERE book_id='$book_id'";
+        $query = "UPDATE tbl_218_books SET book_name='".$book_name."', author='".$author."', abstract='".$abstract."', translate='".$translate."', publisher='".$publisher."', publish_date='".$publish_date."', category_id='".$category_id."', condition_id='".$condition_id."',img='".$img."' WHERE book_id='".$book_id."'";
     }else{
-        $query = "INSERT INTO tbl_218_books (book_name, author, abstract, translate, publisher, publish_date, category_id, condition_id,img) VALUES ('$book_name','$author','$abstract','$translate','$publisher', '$publish_date', '$category_id', '$condition_id','$img')";
+        $query = "INSERT INTO tbl_218_books (book_name, author, abstract, translate, publisher, publish_date, category_id, condition_id,img) VALUES ('".$book_name."','".$author."','".$abstract."','".$translate."','".$publisher."', '".$publish_date."', '".$category_id."', '".$condition_id."','".$img."')";
     }
     echo $query;
     $result = mysqli_query($connection, $query);
@@ -97,11 +100,10 @@ if(isset($_POST["condition"]) && !empty($_POST["condition"] > 0)) {
                         </div>
                         <!-- <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> -->
                         <div class="d-flex flex-column">
-                            <input type="file" id="bookImage" name="bookImage" accept="image/*" value="<?php echo $data['img']?>" 
-                            <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
-                            >
+                            <input type="text" id="bookImage" name="bookImage" value="<?php echo $data['img']?>" readonly>
+                            <button onclick="openImagePicker()">Browse</button>
                             <label for="bookImage" class="justify-content-center d-flex h-100 w-100">
-                                <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder">
+                                <img id="previewImage" src="images/image-placeholder-1.png" alt="bookPlaceholder">
                             </label>
                         </div>
                     </div>

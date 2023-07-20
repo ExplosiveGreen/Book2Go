@@ -273,3 +273,6 @@ option{
 .pr-4{
     padding-right: 4rem !important;
 }
+.hidden {
+    display: none;
+}
