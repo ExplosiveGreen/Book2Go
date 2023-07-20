@@ -267,3 +267,9 @@ option{
 .hv65{
     height: 65vh;
 }
+.pr-2{
+    padding-right: 2rem !important;
+}
+.pr-4{
+    padding-right: 4rem !important;
+}

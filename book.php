@@ -68,7 +68,7 @@ if (!empty($_GET["book_id"])) {
                         <h3>:תקציר</h3>
                         <?php echo '<p class="textRight">' . $row['abstract'] . '</p>'; ?>
                     </section>
-                    <section id="nameAreaMobile" class="flex-column d-flex align-items-end p-4">
+                    <section id="nameAreaMobile" class="flex-column d-flex align-items-center justify-content-center pr-2">
                         <?php
                         echo '<h3>' . $row['book_name'] . '</h3>';
                         echo '<h4>' . $row['author'] . '</h4>';
@@ -146,7 +146,7 @@ if (!empty($_GET["book_id"])) {
                         echo '<span bs-condition="' . $row['condition_id'] . '">מצב: </span>';
                         ?>
                     </section>
-                    <section class="flex-column d-flex align-items-end p-4">
+                    <section class="flex-column d-flex align-items-center justify-content-center pr-4">
                         <?php
                         echo '<h3>' . $row['book_name'] . '</h3>';
                         echo '<h4>' . $row['author'] . '</h4>';

@@ -48,9 +48,9 @@ if (!$result) {
             <div class="d-flex flex-wrap mt-2 gap-3">
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<a href='book.php?book_id=" . $row["book_id"] . "' bs-category='".$row["category_id"]."' class='card justify-content-center'>";
+                    echo "<a href='book.php?book_id=" . $row["book_id"] . "' class='card justify-content-center'>";
                     echo "<div class='card-body d-flex flex-column align-items-center'>";
-                    echo "<img class='card-image-eop' src='" . $row["img"] . "' title='" . $row["book_name"] . "' alt='" . $row["book_name"] . "'>";
+                    echo "<img class='card-image-top' src='" . $row["img"] . "' title='" . $row["book_name"] . "' alt='" . $row["book_name"] . "'>";
                     echo "<p class='card-title'>" . $row["book_name"] . "</p>";
                     echo "<p class='card-subtitle' bs-category=" . $row["category_id"] . "></p>";
                     echo "</div>";
