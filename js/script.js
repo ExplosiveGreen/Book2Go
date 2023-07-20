@@ -39,10 +39,12 @@ fetch('data/categories.json')
 .then(response => response.json())
 .then(data => {
     data.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category['cat_id'];
-        option.innerText = category['cat_name'];
-        document.getElementsByName(`category`)[0].appendChild(option);
+        if(document.getElementsByName(`category`)[0]){
+            const option = document.createElement('option');
+            option.value = category['cat_id'];
+            option.innerText = category['cat_name'];
+            document.getElementsByName(`category`)[0].appendChild(option);
+        }
         document.querySelectorAll(`*[bs-category="${category['cat_id']}"]`)
         .forEach(card => card.innerText = card.innerText + category['cat_name']);
     });
@@ -104,3 +106,14 @@ document.getElementById("catFilter").onchange=function (e){
 }
 
 // p[bs-category="+e.target.value+"]
+function openImagePicker() {
+    window.open('image_picker.php', 'Image Picker', 'width=800,height=600');
+}
+
+function setImage(imagePath) {
+    var selectedImage = document.getElementById('bookImage');
+    selectedImage.value = imagePath;
+    var previewImage = document.getElementById('previewImage');
+    previewImage.src = imagePath;
+    previewImage.classList.remove('hidden');
+}
