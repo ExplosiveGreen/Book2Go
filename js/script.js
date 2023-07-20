@@ -59,10 +59,13 @@ fetch('data/conditions.json')
 .then(response => response.json())
 .then(data => {
     data.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category['condition_id'];
-        option.innerText = category['condition_name'];
-        document.getElementsByName(`condition`)[0].appendChild(option);
+        const cond = document.getElementsByName(`condition`)[0];
+        if(cond && category['reported_typed'].includes(cond.getAttribute('bs-role'))) {
+            const option = document.createElement('option');
+            option.value = category['condition_id'];
+            option.innerText = category['condition_name'];
+            cond.appendChild(option);
+        }
         document.querySelectorAll(`*[bs-condition="${category['condition_id']}"]`)
         .forEach(card => card.innerText = card.innerText + category['condition_name']);
     });
@@ -78,13 +81,13 @@ form && form.addEventListener("submit", function(event) {
     let selectFlag = false;
     const pattern = /^[\u0590-\u05FF]+ \d{4}$/u;
     for( let i = 0; i < selects.length; i++){
-        if(selects[i].value === "-1"){
+        if(selects[i].value === "-1" && selects[i].disabled === false){
             console.log(selects[i].value);
             errorContainer.innerHTML = errorContainer.innerHTML + `<span>${selects[i].name} is required</span>`;
             selectFlag = true;
         }
     }
-    if (!pattern.test(publicationDateValue)) {
+    if (publicationDateInput.disabled == false && !pattern.test(publicationDateValue)) {
         const errorMessage = "<span>תאריך הוצאה חייב להיות בפורמט: חודש עברי ושנה (לדוגמה: אפריל 2016)</span>";
         errorContainer.innerHTML = errorContainer.innerHTML + errorMessage;
         return;

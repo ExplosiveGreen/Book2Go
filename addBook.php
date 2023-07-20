@@ -17,25 +17,37 @@ $data = [
     "condition_id" => 1,
     "img" => "images/image-placeholder-1.png"
 ];
-if(!empty($_POST["bookName"])) {
-    $book_id = $_POST["book_id"];
-    $book_name = $_POST["bookName"];
-    $author = $_POST["authorName"];
-    $abstract = $_POST["abstract"];
-    $translate = $_POST["translatorName"];
-    $publisher = $_POST["publishName"];
-    $publish_date = $_POST["publicationDate"];
-    $category_id = $_POST["category"];
-    $condition_id = $_POST["condition"];
-    $img = $_POST["bookImage"];
-    if($book_id > 0){
-        $query = "UPDATE TABLE tbl_218_book SET book_name='$book_name', author='$author', abstract='$abstract', translate='$translate', publisher='$publisher', publish_date='$publish_date', category_id='$category_id', condition_id='$condition_id',img='$img' WHERE book_id='$book_id'";
-    }else{
-        $query = "INSERT INTO tbl_218_book (book_name, author, abstract, translate, publisher, publish_date, category_id, condition_id,img) VALUES ('$book_name','$author','$abstract','$translate','$publisher', '$publish_date', '$category_id', '$condition_id','$img')";
+if(!empty($_GET["book_id"])) {
+    $book_id = $_GET["book_id"];
+    $query = "SELECT * FROM tbl_218_books WHERE book_id='$book_id'";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        die("DB query failed.");
     }
+    $data = mysqli_fetch_array($result);
+    mysqli_free_result($result);
+}
+if(isset($_POST["condition"]) && !empty($_POST["condition"] > 0)) {
+    echo var_dump($_POST);
+    $book_id = $_POST["book_id"] || $data['book_id'];
+    $book_name = $_POST["bookName"] || $data['book_name'];
+    $author = $_POST["authorName"] || $data['author'];
+    $abstract = $_POST["abstract"] || $data['abstract'];
+    $translate = $_POST["translatorName"] || $data['translate'];
+    $publisher = $_POST["publishName"] || $data['publisher'];
+    $publish_date = $_POST["publicationDate"] || $data['publish_date'];
+    $category_id = $_POST["category"] || $data['category_id'];
+    $condition_id = $_POST["condition"] || $data['condition_id'];
+    $img = $_POST["bookImage"] || $data['img'];
+    if($book_id > 0){
+        $query = "UPDATE TABLE tbl_218_books SET book_name='$book_name', author='$author', abstract='$abstract', translate='$translate', publisher='$publisher', publish_date='$publish_date', category_id='$category_id', condition_id='$condition_id',img='$img' WHERE book_id='$book_id'";
+    }else{
+        $query = "INSERT INTO tbl_218_books (book_name, author, abstract, translate, publisher, publish_date, category_id, condition_id,img) VALUES ('$book_name','$author','$abstract','$translate','$publisher', '$publish_date', '$category_id', '$condition_id','$img')";
+    }
+    echo $query;
     $result = mysqli_query($connection, $query);
     if($result) {
-      header("Location: login.php");
+      header("Location: index.php");
     } else {
       $message = "Failed to insert data information!";
     }
@@ -73,18 +85,21 @@ if(!empty($_POST["bookName"])) {
             </nav>
             <h1 class="text-center mb-5">הוספת ספר</h1>
             <main>
-                <form id="bookForm" action="#" method="post" autocomplete="on">
+                <form id="bookForm" action="#" method="POST" autocomplete="on">
                     <input type="hidden" name="book_id" value="<?php echo $data["book_id"] ?>">
                     <div id='upperAddSection' class="d-flex flex-column justify-content-center gap-4">
                         <div id="abstractArea">
                             <textarea class="form-control textRight" name="abstract" placeholder="הכנס תקציר כאן"
-                                required><?php echo $data["abstract"]?></textarea>
+                                <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                                ><?php echo $data["abstract"]?></textarea>
                             &nbsp;
                             <label for="abstract" class="form-label">:תקציר</label>
                         </div>
                         <!-- <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> -->
                         <div class="d-flex flex-column">
-                            <input type="file" id="bookImage" name="bookImage" accept="image/*" value="<?php echo $data['img']?>" required>
+                            <input type="file" id="bookImage" name="bookImage" accept="image/*" value="<?php echo $data['img']?>" 
+                            <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                            >
                             <label for="bookImage" class="justify-content-center d-flex h-100 w-100">
                                 <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder">
                             </label>
@@ -98,14 +113,18 @@ if(!empty($_POST["bookName"])) {
                                     <div class="row-auto">
                                         <lable for="publishName" class="form-label">:הוצאה</lable>
                                         <input type="text" class="form-control textRight" name="publishName"
-                                            value="<?php echo $data["publisher"]?>" placeholder="שם הוצאה" required>
+                                            value="<?php echo $data["publisher"]?>" placeholder="שם הוצאה" 
+                                            <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                                            >
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="row-auto">
                                         <label for="bookName" class="form-label">:שם הספר</label>
                                         <input type="text" class="form-control textRight" name="bookName" value="<?php echo $data["book_name"]?>"
-                                            placeholder="שם הספר" required>
+                                            placeholder="שם הספר" 
+                                            <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                                        >
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +136,9 @@ if(!empty($_POST["bookName"])) {
                                         <lable for="publicationDate" class="form-label">:תאריך
                                             הוצאה</lable>
                                         <input type="text" class="form-control textRight"
-                                            name="publicationDate" value="<?php echo $data["publish_date"]?>" placeholder="הכנס חודש ושנת הוצאה" required>
+                                            name="publicationDate" value="<?php echo $data["publish_date"]?>" placeholder="הכנס חודש ושנת הוצאה" 
+                                            <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                                        >
                                     </div>
                                 </div>
                                 <div class="col">
@@ -125,7 +146,9 @@ if(!empty($_POST["bookName"])) {
                                         <label for="authorName" class="form-label">:שם
                                             הסופר</label>
                                         <input type="text" class="form-control textRight" name="authorName"
-                                            value="<?php echo $data["author"]?>" placeholder="שם הסופר" required>
+                                            value="<?php echo $data["author"]?>" placeholder="שם הסופר" 
+                                            <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                                        >
                                     </div>
                                 </div>
                             </div>
@@ -137,13 +160,17 @@ if(!empty($_POST["bookName"])) {
                                         <label for="translatorName" class="form-label">:שם
                                             המתרגם</label>
                                         <input type="text" class="form-control textRight"
-                                            name="translatorName" value="<?php echo $data["translate"]?>" placeholder="שם המתרגם">
+                                            name="translatorName" value="<?php echo $data["translate"]?>" placeholder="שם המתרגם"
+                                            <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                                        >
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="row-auto">
                                         <label class="form-label mt-1">:קטגוריה</label>
-                                        <select class="form-select" aria-label="Default select example" name="category">
+                                        <select class="form-select" aria-label="Default select example" name="category"
+                                        <?php if($_SESSION['user_type']=='reader') echo 'disabled'; else echo 'required';?>
+                                        >
                                             <option selected value="-1">בחר קטגוריה</option>
                                         </select>
                                     </div>
@@ -155,7 +182,8 @@ if(!empty($_POST["bookName"])) {
                             <div class="col">
                                 <div class="row-auto">
                                     <label class="form-label mt-1">:מצב</label>
-                                    <select class="form-select" aria-label="Default select example" bs-role="<?php echo $_SESSION['user_type']?>" name="condition">
+                                    <select class="form-select" aria-label="Default select example" bs-role="<?php echo $_SESSION['user_type']?>" name="condition"
+                                    >
                                         <option selected value="-1">בחר מצב</option>
                                     </select>
                                 </div>
