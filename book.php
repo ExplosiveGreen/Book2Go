@@ -30,13 +30,13 @@ if (empty($_SESSION["user_id"])) {
         <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
             data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
     </header>
-    <section id="wrapper" class="d-flex">
+    <main class="d-flex">
         <section class="flex-column d-flex w-100">
             <nav id="breadcrumps" class="d-flex justify-content-end flex-row">
                 <a href="#">פרטי ספר</a>&#60;
                 <a href="index.php" class="noLink">עמוד הבית</a>
             </nav>
-            <main class="align-items-center d-flex">
+            <section id="wrapper" class="align-items-center d-flex">
                 <h1>פרטי הספר</h1>
                 <section id="bookDetails" class="d-flex">
                     <section id="imageAreaMobile" class="align-items-center">
@@ -137,7 +137,7 @@ if (empty($_SESSION["user_id"])) {
                         </section>
                     </section>
                 </section>
-            </main>
+            </section>
         </section>
         <div id="hamburgerNavigation" class="offcanvas-end offcanvas">
             <aside class="d-flex flex-column">
@@ -193,8 +193,7 @@ if (empty($_SESSION["user_id"])) {
                 </section>
             </aside>
         </div>
-    </section>
-
+    </main>
 </body>
 
 </html>

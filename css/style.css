@@ -9,7 +9,7 @@
 header, main, footer, nav, aside, section, div, a{
     display: block;
 }
-.register-container {
+.registerContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,11 +39,11 @@ a{
 .btnRegister:hover {
     background-color: #45a4c2;
 }
-.login-link a {
+.loginLink a {
     color: #5BC0DE;
 
 }
-.login-link a:hover {
+.loginLink a:hover {
     color:#45a4c2;
 }
 header{
@@ -71,12 +71,6 @@ header img {
     background-size: contain;
     background-repeat: no-repeat;
 }
-#searchArea{
-    gap: 5px;
-}
-#search{
-    text-align: center;
-}
 #addBook{
     background-image: url(../images/add.svg);
     width: 24px;
@@ -97,9 +91,6 @@ header img {
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
-}
-#navigationArea{
-    gap: 26px;
 }
 #hamburgerNavigation {
     height: 505px;
@@ -142,31 +133,15 @@ main {
     width: 24px;
     height: 24px;
 }
-#actionArea{
-    gap: 15px;
-}
-.card{
-    width: 15%;
-    height: 15%;
-}
-#bookDetails{
-    gap: 10px;
-}
-#imageAreaMobile{
+#imageAreaMobile, #bookDetails, #imageAreaDesktop{
     gap:10px;
 }
 #nameAreaMobile{
     align-items: center!important;
 }
-#imageAreaDesktop{
-    gap: 10px;
-}
 @media screen and (max-width: 1000px){
     .row{
         display: block!important;
-    }
-    #search {
-        width: 35vw;
     }
     #imageAreaMobile, #nameAreaMobile, #tabsSection{
         display: flex!important;
@@ -259,8 +234,10 @@ h2{
 .col{
     margin-bottom: 5px;
 }
-#nameBookLable,#authorNameLable,#publishNameLable,#translatorNameLabel
-,#publicationDateLable,#categoryLable,#stateLable{
+.card-body img {
+    width: 195px;
+}
+#bookForm label{
     display: flex;
     justify-content: flex-end;
 }

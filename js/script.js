@@ -19,7 +19,14 @@
 //         $('#hamburgerNavigation').attr('class','w30 hv50 collapse show');
 //     }
 // }
-
+fetch('data/categories.json')
+.then(response => response.json())
+.then(data => {
+    data.forEach(category => {
+        document.querySelectorAll(`p[bs-category="${category['cat_id']}"]`)
+        .forEach(card => card.innerText = category['cat_name']);
+    });
+});
 const form = document.getElementById("bookForm");
 const saveButton = document.getElementById("save");
 

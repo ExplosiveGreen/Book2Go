@@ -5,6 +5,12 @@ session_start();
 if (empty($_SESSION["user_id"])) {
     header('Location: login.php');
 }
+
+$query = "SELECT * FROM tbl_218_books";
+$result = mysqli_query($connection, $query);
+if (!$result) {
+    die("DB query failed.");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +19,7 @@ if (empty($_SESSION["user_id"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,6 +28,7 @@ if (empty($_SESSION["user_id"])) {
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
     <title>Home Page</title>
 </head>
 
@@ -32,153 +40,25 @@ if (empty($_SESSION["user_id"])) {
     </header>
     <main class="w-100 d-flex">
         <section id="wrapper" class="w-100">
-            <div id="actionArea" class="d-flex flex-row">
+            <div id="actionArea" class="d-flex flex-row gap-2">
                 <a href="addBook.php" id="addBook"></a>
                 <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
                 <img id="filterIcon" src="images/filter.svg" alt="filterIcon">
             </div>
             <div class="d-flex flex-wrap mt-2 gap-3">
-                <a href="book.php?book_id=1" class="card justify-content-center">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
-                        <p class="card-title">מלאכים</p>
-                        <p class="card-subtitle">רומן רומנטי</p>                        
-                    </div>
-                </a>
-                <a href="book.php?book_id=1" class="card justify-content-center">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
-                        <p class="card-title">מלאכים</p>
-                        <p class="card-subtitle">רומן רומנטי</p>                        
-                    </div>
-                </a>
-                <a href="book.php?book_id=1" class="card justify-content-center">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
-                        <p class="card-title">מלאכים</p>
-                        <p class="card-subtitle">רומן רומנטי</p>                        
-                    </div>
-                </a>
-                <a href="book.php?book_id=1" class="card justify-content-center">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
-                        <p class="card-title">מלאכים</p>
-                        <p class="card-subtitle">רומן רומנטי</p>                        
-                    </div>
-                </a>
-                <a href="book.php?book_id=1" class="card justify-content-center">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
-                        <p class="card-title">מלאכים</p>
-                        <p class="card-subtitle">רומן רומנטי</p>                        
-                    </div>
-                </a>
+                <?php
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<a href='book.php?book_id=" . $row["book_id"] . "' bs-category='".$row["category_id"]."' class='card justify-content-center'>";
+                    echo "<div class='card-body d-flex flex-column align-items-center'>";
+                    echo "<img class='card-image-eop' src='" . $row["img"] . "' title='" . $row["book_name"] . "' alt='" . $row["book_name"] . "'>";
+                    echo "<p class='card-title'>" . $row["book_name"] . "</p>";
+                    echo "<p class='card-subtitle' bs-category=" . $row["category_id"] . "></p>";
+                    echo "</div>";
+                    echo "</a>";
+                }
+                ?>
             </div>
 
-            <!-- <div class="table-responsive w-100">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">תאריך הוספת הספר</th>
-                            <th scope="col">קטגוריה</th>
-                            <th scope="col">מצב הספר</th>
-                            <th scope="col">שם הסופר</th>
-                            <th scope="col">שם הספר</th>
-                            <th scope="col">#</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr>
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.php?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> -->
         </main>
         <div id="hamburgerNavigation" class="offcanvas-end offcanvas">
             <aside class="d-flex flex-column">

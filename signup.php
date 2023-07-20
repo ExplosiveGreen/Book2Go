@@ -45,7 +45,7 @@ if(!empty($_POST["email"])) {
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <div class="card mt-5 register-container">
+        <div class="card mt-5 registerContainerontainer">
           <div class="card-body">
             <h1 class="text-center loginTitle mb-4">Create an Account</h1>
             <form onsubmit="return validateForm()" method="POST" action='#'>
@@ -72,7 +72,7 @@ if(!empty($_POST["email"])) {
               <button type="submit" class="btn btn-primary btn-block btnRegister">Register</button>
               <div class='error-message text-danger'><?php if(isset($message)) { echo $message; } ?></div>
             </form>
-            <p class="text-center mt-3 login-link">Already have an account? <a href="login.php">Login</a></p>
+            <p class="text-center mt-3 loginLink">Already have an account? <a href="login.php">Login</a></p>
           </div>
         </div>
       </div>
