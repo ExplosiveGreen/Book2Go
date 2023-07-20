@@ -40,7 +40,7 @@ fetch('data/categories.json')
 .then(data => {
     data.forEach(category => {
         document.querySelectorAll(`*[bs-category="${category['cat_id']}"]`)
-        .forEach(card => card.innerText = category['cat_name']);
+        .forEach(card => card.innerText = card.innerText + category['cat_name']);
     });
 });
 fetch('data/stations_status.json')
@@ -48,7 +48,7 @@ fetch('data/stations_status.json')
 .then(data => {
     data.forEach(category => {
         document.querySelectorAll(`*[bs-station="${category['status_id']}"]`)
-        .forEach(card => card.innerText = category['status_name']);
+        .forEach(card => card.innerText = card.innerText + category['status_name']);
     });
 });
 fetch('data/conditions.json')
@@ -56,7 +56,7 @@ fetch('data/conditions.json')
 .then(data => {
     data.forEach(category => {
         document.querySelectorAll(`*[bs-condition="${category['condition_id']}"]`)
-        .forEach(card => card.innerText = category['condition_name']);
+        .forEach(card => card.innerText = card.innerText + category['condition_name']);
     });
 });
 const form = document.getElementById("bookForm");
