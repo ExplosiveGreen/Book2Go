@@ -95,3 +95,12 @@ form && form.addEventListener("submit", function(event) {
     if(selectFlag) return;
     form.submit();
 });
+document.getElementById("catFilter").onchange=function (e){
+    document.querySelectorAll("a.card").forEach(function(varCard){
+        console.log(!varCard.querySelector("p[bs-category='"+e.target.value+"']"))
+        if(!varCard.querySelector("p[bs-category='"+e.target.value+"']"))
+            varCard.style.display="none";
+    })
+}
+
+// p[bs-category="+e.target.value+"]

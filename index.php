@@ -28,7 +28,6 @@ if (!$result) {
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
     <title>Home Page</title>
 </head>
 
@@ -41,10 +40,17 @@ if (!$result) {
     <main class="w-100 d-flex">
         <section id="wrapper" class="w-100">
             <div id="actionArea" class="d-flex flex-row gap-2">
-                <a href="addBook.php" id="addBook"></a>
-                <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
+                <a href="addBook.php" id="addBook" class="icon"></a>
+                <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon" class="icon">
                 <!-- <img id="filterIcon" src="images/filter.svg" alt="filterIcon"> -->
                 <!-- add select to category -->
+                <select class="form-select w-50" aria-label="Default select example" name="category" id="catFilter">
+                    <option selected value="-1">בחר קטגוריה</option>
+                </select>
+                <section id="searchArea">
+            <img id="searchIcon" src="images/search.png" alt="searchIcon">
+            <input type="search" class="form-control roundInput" id="search" placeholder="חפש ספר">
+        </section>
             </div>
             <div class="d-flex flex-wrap mt-2 gap-3">
                 <?php
@@ -116,8 +122,8 @@ if (!$result) {
             </aside>
         </div>
     </section>
+    <script src="js/script.js"></script>
 </body>
-
 </html>
 <?php
 mysqli_free_result($result);

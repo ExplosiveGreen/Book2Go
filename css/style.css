@@ -129,9 +129,23 @@ nav {
 main {
     gap: 5px;
 }
-#actionArea * {
+.icon {
     width: 24px;
     height: 24px;
+}
+/* #actionArea{
+    width: 35vw;
+} */
+#searchArea{
+    display: flex;
+    flex-direction: row;
+}
+#search {
+    width: 35vw;
+    text-align: center;
+}
+#searchIcon{
+    width:40px;
 }
 #imageAreaMobile, #bookDetails, #imageAreaDesktop, #stationDetails{
     gap:10px;
