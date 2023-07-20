@@ -30,14 +30,52 @@ if (empty($_SESSION["user_id"])) {
         <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
             data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
     </header>
-    <section id="wrapper" class="d-flex w-100">
-        <main class="w-100">
+    <main class="w-100 d-flex">
+        <section id="wrapper" class="w-100">
             <div id="actionArea" class="d-flex flex-row">
                 <a href="addBook.php" id="addBook"></a>
                 <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
                 <img id="filterIcon" src="images/filter.svg" alt="filterIcon">
             </div>
-            <div class="table-responsive w-100">
+            <div class="d-flex flex-wrap mt-2 gap-3">
+                <a href="book.php?book_id=1" class="card justify-content-center">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
+                        <p class="card-title">מלאכים</p>
+                        <p class="card-subtitle">רומן רומנטי</p>                        
+                    </div>
+                </a>
+                <a href="book.php?book_id=1" class="card justify-content-center">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
+                        <p class="card-title">מלאכים</p>
+                        <p class="card-subtitle">רומן רומנטי</p>                        
+                    </div>
+                </a>
+                <a href="book.php?book_id=1" class="card justify-content-center">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
+                        <p class="card-title">מלאכים</p>
+                        <p class="card-subtitle">רומן רומנטי</p>                        
+                    </div>
+                </a>
+                <a href="book.php?book_id=1" class="card justify-content-center">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
+                        <p class="card-title">מלאכים</p>
+                        <p class="card-subtitle">רומן רומנטי</p>                        
+                    </div>
+                </a>
+                <a href="book.php?book_id=1" class="card justify-content-center">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <img class="card-image-eop" src="images/uploads/angel.png" title="angel" alt="angel">
+                        <p class="card-title">מלאכים</p>
+                        <p class="card-subtitle">רומן רומנטי</p>                        
+                    </div>
+                </a>
+            </div>
+
+            <!-- <div class="table-responsive w-100">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -140,7 +178,7 @@ if (empty($_SESSION["user_id"])) {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
         </main>
         <div id="hamburgerNavigation" class="offcanvas-end offcanvas">
             <aside class="d-flex flex-column">

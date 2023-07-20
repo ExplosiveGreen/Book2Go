@@ -18,5 +18,6 @@
     {"cat_id": 17, "cat_name": "תיירות"},
     {"cat_id": 18, "cat_name": "אוכל"},
     {"cat_id": 19, "cat_name": "ילדים ונוער"},
-    {"cat_id": 20, "cat_name": "תרבות"}
+    {"cat_id": 20, "cat_name": "תרבות"},
+    {"cat_id": 21, "cat_name": "רומן רומנטי"}
 ]

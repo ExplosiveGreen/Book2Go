@@ -131,11 +131,12 @@ nav {
     margin-right: 10px;
 }
 #wrapper{
-    gap: 5px;
-}
-main {
+    
     margin: 5%;
     flex-direction: column;
+}
+main {
+    gap: 5px;
 }
 #actionArea * {
     width: 24px;
@@ -143,6 +144,10 @@ main {
 }
 #actionArea{
     gap: 15px;
+}
+.card{
+    width: 15%;
+    height: 15%;
 }
 #bookDetails{
     gap: 10px;
