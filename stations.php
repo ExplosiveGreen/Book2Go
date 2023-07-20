@@ -29,7 +29,7 @@ if (!$result) {
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
-    <title>Home Page</title>
+    <title>station</title>
 </head>
 
 <body>
@@ -45,6 +45,7 @@ if (!$result) {
                 <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
                 <img id="filterIcon" src="images/filter.svg" alt="filterIcon">
             </div>
+            <h1 class="d-flex justify-content-center">stations list</h1>
             <div class="d-flex flex-wrap mt-2 gap-3">
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {

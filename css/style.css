@@ -133,14 +133,14 @@ main {
     width: 24px;
     height: 24px;
 }
-#imageAreaMobile, #bookDetails, #imageAreaDesktop{
+#imageAreaMobile, #bookDetails, #imageAreaDesktop, #stationDetails{
     gap:10px;
 }
 #nameAreaMobile{
     align-items: center!important;
 }
 @media screen and (max-width: 1000px){
-    .row{
+    #bookForm .row{
         display: block!important;
     }
     #imageAreaMobile, #nameAreaMobile, #tabsSection{

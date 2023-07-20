@@ -43,7 +43,8 @@ if (!$result) {
             <div id="actionArea" class="d-flex flex-row gap-2">
                 <a href="addBook.php" id="addBook"></a>
                 <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
-                <img id="filterIcon" src="images/filter.svg" alt="filterIcon">
+                <!-- <img id="filterIcon" src="images/filter.svg" alt="filterIcon"> -->
+                <!-- add select to category -->
             </div>
             <div class="d-flex flex-wrap mt-2 gap-3">
                 <?php

@@ -28,7 +28,7 @@ if(!empty($_POST["email"])) {
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <div class="card mt-5 registerContainerontainer">
+        <div class="card mt-5 registerContainer">
           <div class="card-body">
             <h1 class="text-center loginTitle mb-4">Create an Account</h1>
             <form onsubmit="return validateRegister()" method="POST" action='#'>
