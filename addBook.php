@@ -105,7 +105,7 @@ if (empty($_SESSION["user_id"])) {
                                 </div>
                                 <div class="col">
                                     <div class="row-auto">
-                                        <label id="categoryLable">:קטגוריה</label>
+                                        <label id="categoryLable" class="form-lable">:קטגוריה</label>
                                         <select class="form-select" aria-label="Default select example" name="category">
                                             <option selected value="-1">בחר קטגוריה</option>
                                             <option value="פנטזיה">פנטזיה</option>
@@ -121,7 +121,7 @@ if (empty($_SESSION["user_id"])) {
                             <div class='row'>
                             <div class="col">
                                 <div class="row-auto">
-                                    <label id="stateLable">:מצב</label>
+                                    <label id="stateLable" class="form-lable">:מצב</label>
                                     <select class="form-select" aria-label="Default select example" name="state">
                                         <option selected value="-1">בחר מצב</option>
                                         <option value="חדש">חדש</option>

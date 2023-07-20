@@ -237,7 +237,7 @@ h2{
 .card-body img {
     width: 195px;
 }
-#bookForm label{
+#bookForm .form-label{
     display: flex;
     justify-content: flex-end;
 }
