@@ -154,7 +154,7 @@ main {
         align-items: center;
         flex-direction: column;
     }
-    #imageAreaDesktop, #abstractAreaDesktop, #bookMeta, #breadcrumps{
+    #imageAreaDesktop, #abstractAreaDesktop, #bookMeta, nav{
         display: none!important;
     }
 }
@@ -206,9 +206,6 @@ main {
     display: flex;
     justify-content: center;
 }
-#abstractLable{
-    margin-top: 6px;
-}
 .column{
     display: flex;
     justify-content: flex-end;
@@ -219,7 +216,6 @@ main {
     background-image: attr(dataImage);
     background-size: contain;
     background-repeat: no-repeat;
-
 }
 #abstractArea{
     display: flex;
@@ -241,16 +237,13 @@ h2{
     display: flex;
     justify-content: flex-end;
 }
-#categoryLable,#stateLable{
-    margin-bottom: 0.5rem;
-}
 .buttons{
     display: flex;
     justify-content: center;
     gap: 100px;
     margin-bottom: 5px;
 }
-#save{
+#bookForm input[type="submit"]{
     margin-top: 30px;
     width: 150px;
     margin-bottom: 5px;
@@ -260,13 +253,12 @@ h2{
 .btn-primary{
     border: none;
 }
-#save:hover,.btn-primary:hover{
+#bookForm input[type="submit"]:hover,.btn-primary:hover{
     background-color: #5BC0DE;
     color: black;
 }
 
-option,#abstract,#bookName,#authorName,#translatorName,#publishName
-,#publicationDate{
+option{
     text-align: right;
 }
 .pad-35{
