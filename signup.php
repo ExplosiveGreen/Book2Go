@@ -5,7 +5,7 @@ if(!empty($_POST["email"])) {
   $password = $_POST["password"];
   $fname = $_POST["fname"];
   $lname = $_POST["lname"];
-  $query = "INSERT INTO tbl_218_users (email, password, first_name, last_name,user_type) VALUES ('$email', '$password', '$fname', '$lname','reader')";
+  $query = "INSERT INTO tbl_218_users (email, password, first_name, last_name) VALUES ('$email', '$password', '$fname', '$lname')";
   $result = mysqli_query($connection, $query);
   if($result) {
     header("Location: login.php");
@@ -22,24 +22,7 @@ if(!empty($_POST["email"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="css/style.css" rel="stylesheet">
-  <script>
-    function validateForm() {
-      var passwordInput = document.getElementById("password");
-
-      var password = passwordInput.value.trim();
-
-      if (password === "") {
-        passwordInput.classList.add("is-invalid");
-        document.getElementById("password-feedback").style.display = "block";
-        return false;
-      } else {
-        passwordInput.classList.remove("is-invalid");
-        document.getElementById("password-feedback").style.display = "none";
-      }
-
-      return true;
-    }
-  </script>
+  <script src="js/script.js"></script>
 </head>
 <body>
   <div class="container">
@@ -48,7 +31,7 @@ if(!empty($_POST["email"])) {
         <div class="card mt-5 registerContainerontainer">
           <div class="card-body">
             <h1 class="text-center loginTitle mb-4">Create an Account</h1>
-            <form onsubmit="return validateForm()" method="POST" action='#'>
+            <form onsubmit="return validateRegister()" method="POST" action='#'>
             <div class="form-group">
                 <label for="fname">First Name:</label>
                 <input type="text" id="fname" name="fname" class="form-control" placeholder="Enter your first name" required>

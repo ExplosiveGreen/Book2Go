@@ -19,11 +19,27 @@
 //         $('#hamburgerNavigation').attr('class','w30 hv50 collapse show');
 //     }
 // }
+function validateRegister() {
+    var passwordInput = document.getElementById("password");
+
+    var password = passwordInput.value.trim();
+
+    if (password === "") {
+      passwordInput.classList.add("is-invalid");
+      document.getElementById("password-feedback").style.display = "block";
+      return false;
+    } else {
+      passwordInput.classList.remove("is-invalid");
+      document.getElementById("password-feedback").style.display = "none";
+    }
+
+    return true;
+}
 fetch('data/categories.json')
 .then(response => response.json())
 .then(data => {
     data.forEach(category => {
-        document.querySelectorAll(`p[bs-category="${category['cat_id']}"]`)
+        document.querySelectorAll(`*[bs-category="${category['cat_id']}"]`)
         .forEach(card => card.innerText = category['cat_name']);
     });
 });
@@ -31,8 +47,16 @@ fetch('data/stations_status.json')
 .then(response => response.json())
 .then(data => {
     data.forEach(category => {
-        document.querySelectorAll(`p[bs-station="${category['status_id']}"]`)
+        document.querySelectorAll(`*[bs-station="${category['status_id']}"]`)
         .forEach(card => card.innerText = category['status_name']);
+    });
+});
+fetch('data/conditions.json')
+.then(response => response.json())
+.then(data => {
+    data.forEach(category => {
+        document.querySelectorAll(`*[bs-condition="${category['condition_id']}"]`)
+        .forEach(card => card.innerText = category['condition_name']);
     });
 });
 const form = document.getElementById("bookForm");

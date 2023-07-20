@@ -11,6 +11,9 @@ if(!empty($_POST["email"])) {
   if(is_array($row)) {
     $_SESSION["user_id"] = $row['user_id'];
     $_SESSION["user_type"] = $row['user_type'];
+    $_SESSION["first_name"] = $row['first_name'];
+    $_SESSION["last_name"] = $row['last_name'];
+    $_SESSION["img"] = $row['img'];
     header('Location: index.php');
   } else {
     $message = "Invalid email or Password!";
@@ -25,24 +28,7 @@ if(!empty($_POST["email"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="css/style.css" rel="stylesheet">
-  <script>
-    function validateForm() {
-      var passwordInput = document.getElementById("password");
-
-      var password = passwordInput.value.trim();
-
-      if (password === "") {
-        passwordInput.classList.add("is-invalid");
-        document.getElementById("password-feedback").style.display = "block";
-        return false;
-      } else {
-        passwordInput.classList.remove("is-invalid");
-        document.getElementById("password-feedback").style.display = "none";
-      }
-
-      return true;
-    }
-  </script>
+  <script src="js/script.js"></script>
 </head>
 <body>
   <div class="container">
@@ -51,7 +37,7 @@ if(!empty($_POST["email"])) {
         <div class="card mt-5 registerContainerontainer">
           <div class="card-body">
             <h1 class="text-center loginTitle mb-4">Welcome to Book2Go</h1>
-            <form onsubmit="return validateForm()" method='POST' action='#'>
+            <form onsubmit="return validateRegister()" method='POST' action='#'>
               <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>

@@ -5,6 +5,21 @@ session_start();
 if (empty($_SESSION["user_id"])) {
     header('Location: login.php');
 }
+if (!empty($_GET["book_id"])) {
+    $query = "SELECT * FROM tbl_218_books where book_id = '" . $_GET['book_id'] . "'";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        die("DB query failed.");
+    }
+    $row = mysqli_fetch_array($result);
+    $query = "SELECT DISTINCT st.station_name 
+    from tbl_218_station_books stb inner join tbl_218_stations st
+    where stb.quantity > 0 and stb.book_id=".$_GET['book_id'].";";
+    $result = mysqli_query($connection, $query);
+    $availability = implode(',', mysqli_fetch_assoc($result));
+} else {
+    header('Location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +36,7 @@ if (empty($_SESSION["user_id"])) {
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
     <title>Book Detail</title>
 </head>
 
@@ -40,18 +56,24 @@ if (empty($_SESSION["user_id"])) {
                 <h1>פרטי הספר</h1>
                 <section id="bookDetails" class="d-flex">
                     <section id="imageAreaMobile" class="align-items-center">
-                        <a id="reserveIcon" href="#"></a>
-                        <img src="images/uploads/angel.png" alt="angel">
-                        <img src="images/fevorit.svg" alt="fevorit">
+                        <?php
+                        if($_SESSION["user_type"] == 'reader'){
+                            echo '<a id="reserveIcon" href="#"></a>';
+                        } 
+                        ?>
+                        <?php echo '<img src="' . $row['img'] . '" alt="angel">'; ?>
+                        <?php echo '<a id="editIcon" href="addBook.php?book_id='.$row['book_id'].'"></a>';?>
                     </section>
                     <section id="abstractAreaDesktop" class="d-flex flex-column align-items-end">
                         <h3>:תקציר</h3>
-                        <p class="textRight">ספר זה מספר על סיפורו של ילד קטן שמגלה כי הוא יכול לראות את המלאך שלו. הוא
-                            מספר על החוויה המרתקת שלו ועל הדרך בה הוא מגלה את המלאך שלו ואת הקשר המיוחד שביניהם. הספר
-                            מספר על החוויה המרתקת שלו ועל הדרך בה הוא מגלה את המלאך שלו ואת הקשר המיוחד שביניהם.</p>
+                        <?php echo '<p class="textRight">' . $row['abstract'] . '</p>'; ?>
                     </section>
                     <section id="nameAreaMobile" class="flex-column d-flex align-items-end p-4">
-                        <h3>מלאכים</h3>
+                        <?php
+                        echo '<h3>' . $row['book_name'] . '</h3>';
+                        echo '<h4>' . $row['author'] . '</h4>';
+                        ?>
+                        <!-- <h3>מלאכים</h3>
                         <h4>ל. א. וות'רלי</h4>
                         <section class="d-flex flex-row gap-2">
                             <span>
@@ -67,11 +89,18 @@ if (empty($_SESSION["user_id"])) {
                                 <img src="images/rating.svg">
                                 <img src="images/rating.svg">
                             </div>
-                        </section>
+                        </section> -->
                     </section>
                     <section id="imageAreaDesktop">
-                        <img src="images/uploads/angel.png" alt="angel">
-                        <a id="editIcon" href="#"></a>
+                        <?php echo '<img src="' . $row['img'] . '" alt="angel">'; ?>
+                        <?php 
+                            echo '<div class="d-flex flex-column gap-2">';
+                            echo '<a id="editIcon" href="addBook.php?book_id='.$row['book_id'].'"></a>';
+                            if($_SESSION["user_type"] == 'reader'){
+                                echo '<a id="reserveIcon" href="#"></a>';
+                            } 
+                            echo '</div>';
+                        ?>
                     </section>
                 </section>
                 <section id="tabsSection">
@@ -81,46 +110,48 @@ if (empty($_SESSION["user_id"])) {
                                 aria-controls="bookInfo" aria-selected="false">עוד על הספר</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#abstractAreaMobile"
-                                role="tab" aria-controls="abstractAreaMobile" aria-selected="true">תקציר</a>
+                            <a class="nav-link active" data-bs-toggle="tab" href="#abstractAreaMobile" role="tab"
+                                aria-controls="abstractAreaMobile" aria-selected="true">תקציר</a>
                         </li>
                     </ul>
                     <section class="tab-content">
                         <section id="bookInfo" role="tabpanel" aria-labelledby="bookInfoTab" class="tab-pane fade">
                             <section class="d-flex flex-column alignHebrewEnd">
-                                <span>תרגום: חנה בן צבי גורן</span>
-                                <span>הוצאה: דני ספרים</span>
-                                <span>תאריך הוצאה: אפריל 2016</span>
-                                <span>קטגוריה: רומן רומנטי</span>
-                                <span>זמינות: ראשון לציון, ראשונים, ראש העין-צפון, באר שבע מרכז</span>
-                                <span>מצב: חדש</span>
+                                <?php
+                                echo '<span>' . $row['translate'] . ':תרגום</span>';
+                                echo '<span>' . $row['publisher'] . ':הוצאה</span>';
+                                echo '<span>' . $row['publish_date'] . ':תאריך הוצאה</span>';
+                                echo '<span bs-category="' . $row['category_id'] . '"> :קטגוריה</span>';
+                                echo '<span>' . $availability . ':זמינות</span>';
+                                echo '<span bs-condition="' . $row['condition_id'] . '"> :מצב</span>';
+                                ?>
                             </section>
                         </section>
                         <section role="tabpanel" aria-labelledby="abstractTab" id="abstractAreaMobile"
                             class="tab-pane fade show active">
                             <section class="d-flex flex-column align-items-end">
-                                <p class="textRight">ספר זה מספר על סיפורו של ילד קטן שמגלה כי הוא יכול לראות את המלאך
-                                    שלו. הוא מספר על החוויה המרתקת שלו ועל הדרך בה הוא מגלה את המלאך שלו ואת הקשר המיוחד
-                                    שביניהם. הספר מספר על החוויה המרתקת שלו ועל הדרך בה הוא מגלה את המלאך שלו ואת הקשר
-                                    המיוחד שביניהם.</p>
+                                <?php echo '<p class="textRight">' . $row['abstract'] . '</p>'; ?>
                             </section>
                         </section>
                     </section>
                 </section>
                 <section id="bookMeta" class="w-100 d-flex flex-row justify-content-between">
                     <section class="w30 p-3 d-flex flex-column align-items-end alignHebrewEnd">
-                        <h3>עוד על הספר</h3>
-                        <span>תרגום: חנה בן צבי גורן</span>
-                        <span>הוצאה: דני ספרים</span>
-                        <span>תאריך הוצאה: אפריל 2016</span>
-                        <span>קטגוריה: רומן רומנטי</span>
-                        <span>זמינות: ראשון לציון, ראשונים, ראש העין-צפון, באר שבע מרכז</span>
-                        <span>מצב: חדש</span>
+                        <?php
+                        echo '<span>תרגום: ' . $row['translate'] . '</span>';
+                        echo '<span>הוצאה: ' . $row['publisher'] . '</span>';
+                        echo '<span>תאריך הוצאה: ' . $row['publish_date'] . '</span>';
+                        echo '<span bs-category="' . $row['category_id'] . '">קטגוריה: </span>';
+                        echo '<span>זמינות: ' . $availability . '</span>';
+                        echo '<span bs-condition="' . $row['condition_id'] . '">מצב: </span>';
+                        ?>
                     </section>
                     <section class="flex-column d-flex align-items-end p-4">
-                        <h3>מלאכים</h3>
-                        <h4>ל. א. וות'רלי</h4>
-                        <section class="d-flex flex-row gap-2">
+                        <?php
+                        echo '<h3>' . $row['book_name'] . '</h3>';
+                        echo '<h4>' . $row['author'] . '</h4>';
+                        ?>
+                        <!-- <section class="d-flex flex-row gap-2">
                             <span>
                                 (27
                                 דירוגים)
@@ -134,7 +165,7 @@ if (empty($_SESSION["user_id"])) {
                                 <img src="images/rating.svg">
                                 <img src="images/rating.svg">
                             </div>
-                        </section>
+                        </section> -->
                     </section>
                 </section>
             </section>
@@ -199,5 +230,6 @@ if (empty($_SESSION["user_id"])) {
 
 </html>
 <?php
+mysqli_free_result($result);
 mysqli_close($connection);
 ?>
