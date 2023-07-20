@@ -28,11 +28,10 @@ fetch('data/categories.json')
     });
 });
 const form = document.getElementById("bookForm");
-const saveButton = document.getElementById("save");
 
 form && form.addEventListener("submit", function(event) {
     event.preventDefault();
-    const publicationDateInput = document.getElementById("publicationDate");
+    const publicationDateInput = document.getElementsByName("publicationDate")[0];
     const selects = document.getElementsByClassName("form-select");
     const errorContainer = document.getElementById("publicationDateError");
     const publicationDateValue = publicationDateInput.value;

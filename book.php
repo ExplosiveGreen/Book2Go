@@ -194,6 +194,7 @@ if (empty($_SESSION["user_id"])) {
             </aside>
         </div>
     </main>
+
 </body>
 
 </html>

@@ -40,10 +40,10 @@ if (empty($_SESSION["user_id"])) {
                 <form id="bookForm" action="addedBook.php" method="get" autocomplete="on">
                     <div id='upperAddSection' class="d-flex flex-column justify-content-center gap-4">
                         <div id="abstractArea">
-                            <textarea class="form-control" id="abstract" name="abstract" placeholder="הכנס תקציר כאן"
+                            <textarea class="form-control textRight" id="abstract" name="abstract" placeholder="הכנס תקציר כאן"
                                 required></textarea>
                             &nbsp;
-                            <label for="abstract" id="abstractLable" class="form-label">:תקציר</label>
+                            <label for="abstract" class="form-label">:תקציר</label>
                         </div>
                         <!-- <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> -->
                         <div class="d-flex flex-column">
@@ -59,15 +59,15 @@ if (empty($_SESSION["user_id"])) {
                             <div class="row">
                                 <div class="col">
                                     <div class="row-auto">
-                                        <lable for="publishName" id="publishNameLable" class="form-label">:הוצאה</lable>
-                                        <input type="text" class="form-control" id="publishName" name="publishName"
+                                        <lable for="publishName" class="form-label">:הוצאה</lable>
+                                        <input type="text" class="form-control textRight" name="publishName"
                                             value="" placeholder="שם הוצאה" required>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="row-auto">
-                                        <label for="bookName" id="nameBookLable" class="form-label">:שם הספר</label>
-                                        <input type="text" class="form-control" id="bookName" name="bookName" value=""
+                                        <label for="bookName" class="form-label">:שם הספר</label>
+                                        <input type="text" class="form-control textRight" name="bookName" value=""
                                             placeholder="שם הספר" required>
                                     </div>
                                 </div>
@@ -77,17 +77,17 @@ if (empty($_SESSION["user_id"])) {
                             <div class='row'>
                                 <div class="col">
                                     <div class="row-auto">
-                                        <lable for="publicationDate" id="publicationDateLable" class="form-label">:תאריך
+                                        <lable for="publicationDate" class="form-label">:תאריך
                                             הוצאה</lable>
-                                        <input type="text" class="form-control" id="publicationDate"
+                                        <input type="text" class="form-control textRight"
                                             name="publicationDate" value="" placeholder="הכנס חודש ושנת הוצאה" required>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="row-auto">
-                                        <label for="authorName" id="authorNameLable" class="form-label">:שם
+                                        <label for="authorName" class="form-label">:שם
                                             הסופר</label>
-                                        <input type="text" class="form-control" id="authorName" name="authorName"
+                                        <input type="text" class="form-control textRight" name="authorName"
                                             value="" placeholder="שם הסופר" required>
                                     </div>
                                 </div>
@@ -97,15 +97,15 @@ if (empty($_SESSION["user_id"])) {
                             <div class="row">
                             <div class="col">
                                     <div class="row-auto">
-                                        <label for="translatorName" id="translatorNameLabel" class="form-label">:שם
+                                        <label for="translatorName" class="form-label">:שם
                                             המתרגם</label>
-                                        <input type="text" class="form-control" id="translatorName"
+                                        <input type="text" class="form-control textRight"
                                             name="translatorName" value="" placeholder="שם המתרגם">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="row-auto">
-                                        <label id="categoryLable" class="form-lable">:קטגוריה</label>
+                                        <label class="form-label mt-1">:קטגוריה</label>
                                         <select class="form-select" aria-label="Default select example" name="category">
                                             <option selected value="-1">בחר קטגוריה</option>
                                             <option value="פנטזיה">פנטזיה</option>
@@ -121,7 +121,7 @@ if (empty($_SESSION["user_id"])) {
                             <div class='row'>
                             <div class="col">
                                 <div class="row-auto">
-                                    <label id="stateLable" class="form-lable">:מצב</label>
+                                    <label class="form-label mt-1">:מצב</label>
                                     <select class="form-select" aria-label="Default select example" name="state">
                                         <option selected value="-1">בחר מצב</option>
                                         <option value="חדש">חדש</option>
@@ -138,7 +138,7 @@ if (empty($_SESSION["user_id"])) {
                     <div id="publicationDateError"
                         class="error-message text-danger d-flex flex-column align-items-center"></div>
                     <div class="buttons">
-                        <input type="submit" class="btn btn-primary" id="save" value="שמירה">
+                        <input type="submit" class="btn btn-primary" value="שמירה">
                     </div>
                 </form>
                 <script src="js/script.js"></script>
