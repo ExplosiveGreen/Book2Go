@@ -1,3 +1,11 @@
+<?php
+include "db.php";
+session_start();
+
+if (empty($_SESSION["user_id"])) {
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,29 +21,19 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
     <title>Home Page</title>
 </head>
 
 <body>
     <header class="d-flex justify-content-between">
-        <section id="iconsArea">
-            <a href="#" id="locationIcon"></a>
-            <a href="#" id="gridIcon"></a>
-        </section>
-        <section id="searchArea">
-            <img id="searchIcon" src="images/search.png" alt="searchIcon">
-            <input type="search" class="form-control roundInput" id="search" placeholder="חפש ספר">
-        </section>
-        <section id="navigationArea">
-            <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="collapse" data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
-            <a href="index.html" id="logo"></a>
-        </section>
+        <a href="index.php" id="logo"></a>
+        <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
+            data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
     </header>
     <section id="wrapper" class="d-flex w-100">
         <main class="w-100">
             <div id="actionArea" class="d-flex flex-row">
-                <a href="addBook.html" id="addBook"></a>
+                <a href="addBook.php" id="addBook"></a>
                 <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
                 <img id="filterIcon" src="images/filter.svg" alt="filterIcon">
             </div>
@@ -57,7 +55,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -65,15 +63,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
-                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
-                        </tr>
-                        <tr> 
-                            <td>אפריל 2016</td>
-                            <td>רומן רומנטי</td>
-                            <td>חדש</td>
-                            <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -81,7 +71,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -89,7 +79,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -97,7 +87,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -105,7 +95,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -113,7 +103,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -121,7 +111,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -129,7 +119,7 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                         <tr>
@@ -137,18 +127,27 @@
                             <td>רומן רומנטי</td>
                             <td>חדש</td>
                             <td>ל.א. וות'רלי</td>
-                            <td><a href="book.html?prodId=1">מלאכים</a></td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
+                            <th scope="row"><input type="checkbox" class="form-check-input"></th>
+                        </tr>
+                        <tr>
+                            <td>אפריל 2016</td>
+                            <td>רומן רומנטי</td>
+                            <td>חדש</td>
+                            <td>ל.א. וות'רלי</td>
+                            <td><a href="book.php?prodId=1">מלאכים</a></td>
                             <th scope="row"><input type="checkbox" class="form-check-input"></th>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </main>
-        <div id="hamburgerNavigation">
-            <aside class="d-flex flex-column justify-content-between">
+        <div id="hamburgerNavigation" class="offcanvas-end offcanvas">
+            <aside class="d-flex flex-column">
                 <section>
                     <section class="align-items-end">
-                        <img role="button" id="innerHamburger" alt="innerHamburger" src="images/menu.png" data-bs-dismiss="offcanvas">
+                        <img role="button" id="innerHamburger" alt="innerHamburger" src="images/menu.png"
+                            data-bs-dismiss="offcanvas">
                     </section>
                     <section class="d-flex align-items-center pad-35 justify-content-center">
                         <img src="images/coral.png" class="profilePic" alt="coral">
@@ -162,35 +161,35 @@
                 <section>
                     <a href="#" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                       <section class="d-flex flex-row gap-1">
+                        <section class="d-flex flex-row gap-1">
                             <span>הפרופיל שלי</span>
                             <img src="images/profile.svg" alt="profile">
-                       </section>
+                        </section>
                     </a>
                     <a href="#" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                       <section class="d-flex flex-row gap-1">
+                        <section class="d-flex flex-row gap-1">
                             <span>דוחות</span>
                             <img src="images/report.svg" alt="report">
-                       </section>
+                        </section>
                     </a>
-                    <a href="index.html" class="btn d-flex flex-row justify-content-between">
+                    <a href="index.php" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                       <section class="d-flex flex-row gap-1">
+                        <section class="d-flex flex-row gap-1">
                             <span>רשימת ספרים</span>
                             <img src="images/rating-gray.svg" alt="ratingGray">
-                       </section>
+                        </section>
                     </a>
                 </section>
                 <section>
                     <a href="#" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                       <section class="d-flex flex-row gap-1">
+                        <section class="d-flex flex-row gap-1">
                             <span>הגדרות</span>
                             <img src="images/setting.svg" alt="setting">
-                       </section>
+                        </section>
                     </a>
-                    <a href="#" class="btn d-flex flex-row justify-content-end gap-1">
+                    <a href="logout.php" class="btn d-flex flex-row justify-content-end gap-1">
                         <span>התנתקות</span>
                         <img src="images/logout.svg" alt="logout">
                     </a>
@@ -201,3 +200,6 @@
 </body>
 
 </html>
+<?php
+mysqli_close($connection);
+?>

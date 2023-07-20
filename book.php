@@ -1,3 +1,11 @@
+<?php
+include "db.php";
+session_start();
+
+if (empty($_SESSION["user_id"])) {
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,31 +21,20 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
     <title>Book Detail</title>
 </head>
 
 <body>
     <header class="d-flex justify-content-between">
-        <section id="iconsArea">
-            <a href="#" id="locationIcon"></a>
-            <a href="#" id="gridIcon"></a>
-        </section>
-        <section id="searchArea">
-            <img id="searchIcon" src="images/search.png" alt="searchIcon">
-            <input type="search" class="form-control roundInput" id="search" placeholder="חפש ספר">
-        </section>
-        <section id="navigationArea">
-            <img role="button" id="hamburger" src="images/menu.png" alt="hamburger"
-                data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
-            <a href="index.html" id="logo"></a>
-        </section>
+        <a href="index.php" id="logo"></a>
+        <img role="button" id="hamburger" src="images/menu.png" alt="hamburger" data-bs-toggle="offcanvas"
+            data-bs-target="#hamburgerNavigation" aria-expanded="false" aria-controls="hamburgerNavigation">
     </header>
     <section id="wrapper" class="d-flex">
         <section class="flex-column d-flex w-100">
             <nav id="breadcrumps" class="d-flex justify-content-end flex-row">
                 <a href="#">פרטי ספר</a>&#60;
-                <a href="index.html" class="noLink">עמוד הבית</a>
+                <a href="index.php" class="noLink">עמוד הבית</a>
             </nav>
             <main class="align-items-center d-flex">
                 <h1>פרטי הספר</h1>
@@ -142,36 +139,40 @@
                 </section>
             </main>
         </section>
-        <div id="hamburgerNavigation">
-            <aside class="d-flex flex-column justify-content-between h-100">
+        <div id="hamburgerNavigation" class="offcanvas-end offcanvas">
+            <aside class="d-flex flex-column">
                 <section>
                     <section class="align-items-end">
                         <img role="button" id="innerHamburger" alt="innerHamburger" src="images/menu.png"
                             data-bs-dismiss="offcanvas">
                     </section>
-                    <section class="d-flex align-items-center p-3">
+                    <section class="d-flex align-items-center pad-35 justify-content-center">
                         <img src="images/coral.png" class="profilePic" alt="coral">
                         <span>קורל</span>
+                    </section>
+                    <section class="d-flex align-items-center pt-3 justify-content-center">
+                        <span>יעיעיחיעח</span>
+                        <span>יהחכעיחיעח</span>
                     </section>
                 </section>
                 <section>
                     <a href="#" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                        <section class="d-flex flex-row">
+                        <section class="d-flex flex-row gap-1">
                             <span>הפרופיל שלי</span>
                             <img src="images/profile.svg" alt="profile">
                         </section>
                     </a>
                     <a href="#" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                        <section class="d-flex flex-row">
+                        <section class="d-flex flex-row gap-1">
                             <span>דוחות</span>
                             <img src="images/report.svg" alt="report">
                         </section>
                     </a>
-                    <a href="index.html" class="btn d-flex flex-row justify-content-between">
+                    <a href="index.php" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                        <section class="d-flex flex-row">
+                        <section class="d-flex flex-row gap-1">
                             <span>רשימת ספרים</span>
                             <img src="images/rating-gray.svg" alt="ratingGray">
                         </section>
@@ -180,12 +181,12 @@
                 <section>
                     <a href="#" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
-                        <section class="d-flex flex-row">
+                        <section class="d-flex flex-row gap-1">
                             <span>הגדרות</span>
                             <img src="images/setting.svg" alt="setting">
                         </section>
                     </a>
-                    <a href="#" class="btn d-flex flex-row justify-content-end">
+                    <a href="logout.php" class="btn d-flex flex-row justify-content-end gap-1">
                         <span>התנתקות</span>
                         <img src="images/logout.svg" alt="logout">
                     </a>
@@ -197,3 +198,6 @@
 </body>
 
 </html>
+<?php
+mysqli_close($connection);
+?>
