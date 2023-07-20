@@ -38,8 +38,8 @@ if (empty($_SESSION["user_id"])) {
             <h1 class="text-center mb-5">הוספת ספר</h1>
             <main>
                 <form id="bookForm" action="addedBook.php" method="get" autocomplete="on">
-                    <div class="d-flex flex-column justify-content-center">
-                        <div id="abstractArea" class="h-50">
+                    <div id='upperAddSection' class="d-flex flex-column justify-content-center gap-4">
+                        <div id="abstractArea">
                             <textarea class="form-control" id="abstract" name="abstract" placeholder="הכנס תקציר כאן"
                                 required></textarea>
                             &nbsp;
@@ -48,71 +48,79 @@ if (empty($_SESSION["user_id"])) {
                         <!-- <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> -->
                         <div class="d-flex flex-column">
                             <input type="file" id="bookImage" name="bookImage" accept="image/*" required>
-                            <label for="bookImage" class="justify-content-center d-flex">
+                            <label for="bookImage" class="justify-content-center d-flex h-100 w-100">
                                 <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder">
                             </label>
                         </div>
                     </div>
                     <h2>פרטי הספר</h2>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col">
-                                <div class="col-auto">
-                                    <lable for="publishName" id="publishNameLable" class="form-label">:הוצאה</lable>
-                                    <input type="text" class="form-control" id="publishName" name="publishName" value=""
-                                        placeholder="שם הוצאה" required>
+                    <div class="container">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row-auto">
+                                        <lable for="publishName" id="publishNameLable" class="form-label">:הוצאה</lable>
+                                        <input type="text" class="form-control" id="publishName" name="publishName"
+                                            value="" placeholder="שם הוצאה" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="col-auto">
-                                    <label for="bookName" id="nameBookLable" class="form-label">:שם הספר</label>
-                                    <input type="text" class="form-control" id="bookName" name="bookName" value=""
-                                        placeholder="שם הספר" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="col-auto">
-                                    <lable for="publicationDate" id="publicationDateLable" class="form-label">:תאריך
-                                        הוצאה</lable>
-                                    <input type="text" class="form-control" id="publicationDate" name="publicationDate"
-                                        value="" placeholder="הכנס חודש ושנת הוצאה" required>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="col-auto">
-                                    <label for="authorName" id="authorNameLable" class="form-label">:שם הסופר</label>
-                                    <input type="text" class="form-control" id="authorName" name="authorName" value=""
-                                        placeholder="שם הסופר" required>
+                                <div class="col">
+                                    <div class="row-auto">
+                                        <label for="bookName" id="nameBookLable" class="form-label">:שם הספר</label>
+                                        <input type="text" class="form-control" id="bookName" name="bookName" value=""
+                                            placeholder="שם הספר" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="col-auto">
-                                    <label id="categoryLable">:קטגוריה</label>
-                                    <select class="form-select" aria-label="Default select example" name="category">
-                                        <option selected value="-1">בחר קטגוריה</option>
-                                        <option value="פנטזיה">פנטזיה</option>
-                                        <option value="מדע בדיוני">מדע בדיוני</option>
-                                        <option value="רומן רומנטי">רומן רומנטי</option>
-                                        <option value="ריאליסטי">ריאליסטי</option>
-                                    </select>
+                        <div class="col">
+                            <div class='row'>
+                                <div class="col">
+                                    <div class="row-auto">
+                                        <lable for="publicationDate" id="publicationDateLable" class="form-label">:תאריך
+                                            הוצאה</lable>
+                                        <input type="text" class="form-control" id="publicationDate"
+                                            name="publicationDate" value="" placeholder="הכנס חודש ושנת הוצאה" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="col-auto">
-                                    <label for="translatorName" id="translatorNameLabel" class="form-label">:שם
-                                        המתרגם</label>
-                                    <input type="text" class="form-control" id="translatorName" name="translatorName"
-                                        value="" placeholder="שם המתרגם">
+                                <div class="col">
+                                    <div class="row-auto">
+                                        <label for="authorName" id="authorNameLable" class="form-label">:שם
+                                            הסופר</label>
+                                        <input type="text" class="form-control" id="authorName" name="authorName"
+                                            value="" placeholder="שם הסופר" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="col-auto">
+                        <div class="col">
+                            <div class="row">
+                            <div class="col">
+                                    <div class="row-auto">
+                                        <label for="translatorName" id="translatorNameLabel" class="form-label">:שם
+                                            המתרגם</label>
+                                        <input type="text" class="form-control" id="translatorName"
+                                            name="translatorName" value="" placeholder="שם המתרגם">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row-auto">
+                                        <label id="categoryLable">:קטגוריה</label>
+                                        <select class="form-select" aria-label="Default select example" name="category">
+                                            <option selected value="-1">בחר קטגוריה</option>
+                                            <option value="פנטזיה">פנטזיה</option>
+                                            <option value="מדע בדיוני">מדע בדיוני</option>
+                                            <option value="רומן רומנטי">רומן רומנטי</option>
+                                            <option value="ריאליסטי">ריאליסטי</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class='row'>
+                            <div class="col">
+                                <div class="row-auto">
                                     <label id="stateLable">:מצב</label>
                                     <select class="form-select" aria-label="Default select example" name="state">
                                         <option selected value="-1">בחר מצב</option>
@@ -122,6 +130,8 @@ if (empty($_SESSION["user_id"])) {
                                         <option value="בלוי">בלוי</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col"></div>
                             </div>
                         </div>
                     </div>
@@ -188,7 +198,7 @@ if (empty($_SESSION["user_id"])) {
                 </section>
             </aside>
         </div>
-        </div>
+    </div>
 </body>
 
 </html>

@@ -41,7 +41,7 @@ if (empty($_SESSION["user_id"])) {
                 <section id="bookDetails" class="d-flex">
                     <section id="imageAreaMobile" class="align-items-center">
                         <a id="reserveIcon" href="#"></a>
-                        <img src="images/angel.png" alt="angel">
+                        <img src="images/uploads/angel.png" alt="angel">
                         <img src="images/fevorit.svg" alt="fevorit">
                     </section>
                     <section id="abstractAreaDesktop" class="d-flex flex-column align-items-end">
@@ -70,7 +70,7 @@ if (empty($_SESSION["user_id"])) {
                         </section>
                     </section>
                     <section id="imageAreaDesktop">
-                        <img src="images/angel.png" alt="angel">
+                        <img src="images/uploads/angel.png" alt="angel">
                         <a id="editIcon" href="#"></a>
                     </section>
                 </section>

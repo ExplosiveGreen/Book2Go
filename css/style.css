@@ -157,6 +157,9 @@ main {
     gap: 10px;
 }
 @media screen and (max-width: 1000px){
+    .row{
+        display: block!important;
+    }
     #search {
         width: 35vw;
     }
@@ -176,6 +179,10 @@ main {
     }
 }
 @media screen and (min-width: 1001px){
+    #upperAddSection{
+        flex-direction: row!important;
+        height: 25vh;
+    }
     #imageAreaMobile, #nameAreaMobile, #tabsSection{
         display: none!important;
     }
@@ -232,7 +239,6 @@ main {
     background-image: attr(dataImage);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 25%;
 
 }
 #abstractArea{
