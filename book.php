@@ -16,7 +16,10 @@ if (!empty($_GET["book_id"])) {
     from tbl_218_station_books stb inner join tbl_218_stations st
     where stb.quantity > 0 and stb.book_id=".$_GET['book_id'].";";
     $result = mysqli_query($connection, $query);
-    $availability = implode(',', mysqli_fetch_assoc($result));
+    $availability = "";
+    if(mysqli_fetch_assoc($result)){
+        $availability = implode(',', mysqli_fetch_assoc($result));
+    }
 } else {
     header('Location: index.php');
 }

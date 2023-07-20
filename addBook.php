@@ -100,10 +100,9 @@ if(isset($_POST["condition"]) && !empty($_POST["condition"] > 0)) {
                         </div>
                         <!-- <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> -->
                         <div class="d-flex flex-column">
-                            <input type="text" id="bookImage" name="bookImage" value="<?php echo $data['img']?>" readonly>
-                            <button onclick="openImagePicker()">Browse</button>
+                            <input type="hidden" id="bookImage" name="bookImage" value="<?php echo $data['img']?>" readonly>
                             <label for="bookImage" class="justify-content-center d-flex h-100 w-100">
-                                <img id="previewImage" src="images/image-placeholder-1.png" alt="bookPlaceholder">
+                                <img id="previewImage" onclick="openImagePicker()" src="<?php echo $data['img']?>" alt="bookPlaceholder">
                             </label>
                         </div>
                     </div>

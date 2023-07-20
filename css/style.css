@@ -212,7 +212,7 @@ main {
     gap: 20px;
     height: 40%;
 }
-#bookPlaceholder{
+#previewImage{
     background-image: attr(dataImage);
     background-size: contain;
     background-repeat: no-repeat;
