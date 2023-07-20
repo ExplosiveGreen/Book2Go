@@ -39,6 +39,10 @@ fetch('data/categories.json')
 .then(response => response.json())
 .then(data => {
     data.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category['cat_id'];
+        option.innerText = category['cat_name'];
+        document.getElementsByName(`category`)[0].appendChild(option);
         document.querySelectorAll(`*[bs-category="${category['cat_id']}"]`)
         .forEach(card => card.innerText = card.innerText + category['cat_name']);
     });
@@ -55,6 +59,10 @@ fetch('data/conditions.json')
 .then(response => response.json())
 .then(data => {
     data.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category['condition_id'];
+        option.innerText = category['condition_name'];
+        document.getElementsByName(`condition`)[0].appendChild(option);
         document.querySelectorAll(`*[bs-condition="${category['condition_id']}"]`)
         .forEach(card => card.innerText = card.innerText + category['condition_name']);
     });

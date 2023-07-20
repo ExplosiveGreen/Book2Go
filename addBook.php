@@ -5,6 +5,42 @@ session_start();
 if (empty($_SESSION["user_id"])) {
     header('Location: login.php');
 }
+$data = [
+    "book_id" => -1,
+    "book_name" => "",
+    "author" => "",
+    "abstract" => "",
+    "translate" => "",
+    "publisher" => "",
+    "publish_date" => "",
+    "category_id" => 1,
+    "condition_id" => 1,
+    "img" => "images/image-placeholder-1.png"
+];
+if(!empty($_POST["bookName"])) {
+    $book_id = $_POST["book_id"];
+    $book_name = $_POST["bookName"];
+    $author = $_POST["authorName"];
+    $abstract = $_POST["abstract"];
+    $translate = $_POST["translatorName"];
+    $publisher = $_POST["publishName"];
+    $publish_date = $_POST["publicationDate"];
+    $category_id = $_POST["category"];
+    $condition_id = $_POST["condition"];
+    $img = $_POST["bookImage"];
+    if($book_id > 0){
+        $query = "UPDATE TABLE tbl_218_book SET book_name='$book_name', author='$author', abstract='$abstract', translate='$translate', publisher='$publisher', publish_date='$publish_date', category_id='$category_id', condition_id='$condition_id',img='$img' WHERE book_id='$book_id'";
+    }else{
+        $query = "INSERT INTO tbl_218_book (book_name, author, abstract, translate, publisher, publish_date, category_id, condition_id,img) VALUES ('$book_name','$author','$abstract','$translate','$publisher', '$publish_date', '$category_id', '$condition_id','$img')";
+    }
+    $result = mysqli_query($connection, $query);
+    if($result) {
+      header("Location: login.php");
+    } else {
+      $message = "Failed to insert data information!";
+    }
+    mysqli_free_result($result);
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,17 +73,18 @@ if (empty($_SESSION["user_id"])) {
             </nav>
             <h1 class="text-center mb-5">הוספת ספר</h1>
             <main>
-                <form id="bookForm" action="addedBook.php" method="get" autocomplete="on">
+                <form id="bookForm" action="#" method="post" autocomplete="on">
+                    <input type="hidden" name="book_id" value="<?php echo $data["book_id"] ?>">
                     <div id='upperAddSection' class="d-flex flex-column justify-content-center gap-4">
                         <div id="abstractArea">
                             <textarea class="form-control textRight" name="abstract" placeholder="הכנס תקציר כאן"
-                                required></textarea>
+                                required><?php echo $data["abstract"]?></textarea>
                             &nbsp;
                             <label for="abstract" class="form-label">:תקציר</label>
                         </div>
                         <!-- <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder"> -->
                         <div class="d-flex flex-column">
-                            <input type="file" id="bookImage" name="bookImage" accept="image/*" required>
+                            <input type="file" id="bookImage" name="bookImage" accept="image/*" value="<?php echo $data['img']?>" required>
                             <label for="bookImage" class="justify-content-center d-flex h-100 w-100">
                                 <img id="bookPlaceholder" src="images/image-placeholder-1.png" alt="bookPlaceholder">
                             </label>
@@ -61,13 +98,13 @@ if (empty($_SESSION["user_id"])) {
                                     <div class="row-auto">
                                         <lable for="publishName" class="form-label">:הוצאה</lable>
                                         <input type="text" class="form-control textRight" name="publishName"
-                                            value="" placeholder="שם הוצאה" required>
+                                            value="<?php echo $data["publisher"]?>" placeholder="שם הוצאה" required>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="row-auto">
                                         <label for="bookName" class="form-label">:שם הספר</label>
-                                        <input type="text" class="form-control textRight" name="bookName" value=""
+                                        <input type="text" class="form-control textRight" name="bookName" value="<?php echo $data["book_name"]?>"
                                             placeholder="שם הספר" required>
                                     </div>
                                 </div>
@@ -80,7 +117,7 @@ if (empty($_SESSION["user_id"])) {
                                         <lable for="publicationDate" class="form-label">:תאריך
                                             הוצאה</lable>
                                         <input type="text" class="form-control textRight"
-                                            name="publicationDate" value="" placeholder="הכנס חודש ושנת הוצאה" required>
+                                            name="publicationDate" value="<?php echo $data["publish_date"]?>" placeholder="הכנס חודש ושנת הוצאה" required>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -88,7 +125,7 @@ if (empty($_SESSION["user_id"])) {
                                         <label for="authorName" class="form-label">:שם
                                             הסופר</label>
                                         <input type="text" class="form-control textRight" name="authorName"
-                                            value="" placeholder="שם הסופר" required>
+                                            value="<?php echo $data["author"]?>" placeholder="שם הסופר" required>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +137,7 @@ if (empty($_SESSION["user_id"])) {
                                         <label for="translatorName" class="form-label">:שם
                                             המתרגם</label>
                                         <input type="text" class="form-control textRight"
-                                            name="translatorName" value="" placeholder="שם המתרגם">
+                                            name="translatorName" value="<?php echo $data["translate"]?>" placeholder="שם המתרגם">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -108,10 +145,6 @@ if (empty($_SESSION["user_id"])) {
                                         <label class="form-label mt-1">:קטגוריה</label>
                                         <select class="form-select" aria-label="Default select example" name="category">
                                             <option selected value="-1">בחר קטגוריה</option>
-                                            <option value="פנטזיה">פנטזיה</option>
-                                            <option value="מדע בדיוני">מדע בדיוני</option>
-                                            <option value="רומן רומנטי">רומן רומנטי</option>
-                                            <option value="ריאליסטי">ריאליסטי</option>
                                         </select>
                                     </div>
                                 </div>
@@ -122,12 +155,8 @@ if (empty($_SESSION["user_id"])) {
                             <div class="col">
                                 <div class="row-auto">
                                     <label class="form-label mt-1">:מצב</label>
-                                    <select class="form-select" aria-label="Default select example" name="state">
+                                    <select class="form-select" aria-label="Default select example" bs-role="<?php echo $_SESSION['user_type']?>" name="condition">
                                         <option selected value="-1">בחר מצב</option>
-                                        <option value="חדש">חדש</option>
-                                        <option value="קריא">קריא</option>
-                                        <option value="פגום">פגום</option>
-                                        <option value="בלוי">בלוי</option>
                                     </select>
                                 </div>
                             </div>
