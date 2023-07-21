@@ -1,6 +1,6 @@
 ﻿<?php 
 include "config.php";
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+$connection = mysqli_connect($host, $username, $password, $dbName);
 $connection->query("SET NAMES 'utf8'");
 
 if (!$connection) {
