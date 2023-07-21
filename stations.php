@@ -28,7 +28,6 @@ if (!$result) {
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
     <title>station</title>
 </head>
 
@@ -122,7 +121,7 @@ if (!$result) {
         </div>
     </section>
 </body>
-
+<script src="js/script.js"></script>
 </html>
 <?php
 mysqli_close($connection);

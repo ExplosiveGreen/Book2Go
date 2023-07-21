@@ -123,7 +123,7 @@ stationForm && stationForm.addEventListener("submit", function (event) {
 document.getElementById("catFilter") && (
     document.getElementById("catFilter").onchange = function (e) {
         document.querySelectorAll("a.card").forEach(function (varCard) {
-            console.log(!varCard.querySelector("p[bs-category='" + e.target.value + "']"))
+            varCard.style.display = "block";
             if (!varCard.querySelector("p[bs-category='" + e.target.value + "']"))
                 varCard.style.display = "none";
         })
@@ -132,7 +132,7 @@ document.getElementById("catFilter") && (
 document.getElementById("statusFilter") && (
     document.getElementById("statusFilter").onchange = function (e) {
         document.querySelectorAll("a.card").forEach(function (varCard) {
-            console.log(!varCard.querySelector("p[bs-station='" + e.target.value + "']"))
+            varCard.style.display = "block";
             if (!varCard.querySelector("p[bs-station='" + e.target.value + "']"))
                 varCard.style.display = "none";
         })

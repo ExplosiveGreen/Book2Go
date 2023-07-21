@@ -60,7 +60,7 @@ if (!empty($_GET["book_id"])) {
                     <section id="imageAreaMobile" class="align-items-center">
                         <?php
                         if($_SESSION["user_type"] == 'reader'){
-                            echo '<a id="reserveIcon" href="#"></a>';
+                            echo "<a  id='reserveIcon' href='reserveBook.php?book_id=".$row['book_id']."'></a>";
                         } 
                         ?>
                         <?php echo '<img src="' . $row['img'] . '" alt="angel">'; ?>
@@ -104,7 +104,7 @@ if (!empty($_GET["book_id"])) {
                             echo '<div class="d-flex flex-column gap-2">';
                             echo '<a id="editIcon" href="addBook.php?book_id='.$row['book_id'].'"></a>';
                             if($_SESSION["user_type"] == 'reader'){
-                                echo '<a id="reserveIcon" href="#"></a>';
+                                echo "<a  id='reserveIcon' href='reserveBook.php?book_id=".$row['book_id']."'></a>";
                             } 
                             if($_SESSION["user_type"] == 'librarian'){
                                 echo "<a id='deleteIcon' href='deleteBook.php?book_id=".$row['book_id']."'></a>";
