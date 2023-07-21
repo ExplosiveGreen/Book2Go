@@ -90,13 +90,6 @@ if (!$result) {
                             <img src="images/profile.svg" alt="profile">
                         </section>
                     </a>
-                    <a href="#" class="btn d-flex flex-row justify-content-between">
-                        <span>&#60;</span>
-                        <section class="d-flex flex-row gap-1">
-                            <span>דוחות</span>
-                            <img src="images/report.svg" alt="report">
-                        </section>
-                    </a>
                     <a href="index.php" class="btn d-flex flex-row justify-content-between">
                         <span>&#60;</span>
                         <section class="d-flex flex-row gap-1">
