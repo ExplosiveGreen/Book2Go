@@ -63,6 +63,7 @@ if (!empty($_GET["station_id"])) {
                     <section class="d-flex gap-2">
                     <?php echo '<img src="' . $row['station_img'] . '" alt="'.$row['station_img'].'">'; ?>
                     <?php echo '<a id="editIcon" href="addStation.php?station_id='.$row['station_id'].'"></a>';?>
+                    <?php echo '<a id="deleteIcon" href="deleteStation.php?station_id='.$row['station_id'].'"></a>';?>
                     </section>
                 </section>
             </section>
