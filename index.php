@@ -104,6 +104,13 @@ if (!$result) {
                             <img src="images/rating-gray.svg" alt="ratingGray">
                         </section>
                     </a>
+                    <a href="stations.php" class="btn d-flex flex-row justify-content-between">
+                        <span>&#60;</span>
+                        <section class="d-flex flex-row gap-1">
+                            <span>רשימת תחנות</span>
+                            <img src="images/rating-gray.svg" alt="ratingGray">
+                        </section>
+                    </a>
                 </section>
                 <section>
                     <a href="#" class="btn d-flex flex-row justify-content-between">
