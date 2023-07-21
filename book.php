@@ -17,7 +17,7 @@ if (!empty($_GET["book_id"])) {
     $result = mysqli_query($connection, $query);
     $availability = "";
     if(mysqli_fetch_assoc($result)){
-        $availability = implode(',', mysqli_fetch_assoc($result));
+        // $availability = implode(',', mysqli_fetch_assoc($result));
     }
 } else {
     header('Location: index.php');
