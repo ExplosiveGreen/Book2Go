@@ -41,9 +41,13 @@ if (!$result) {
     <main class="w-100 d-flex">
         <section id="wrapper" class="w-100">
             <div id="actionArea" class="d-flex flex-row gap-2">
-                <a href="addStation.php" id="addStation"></a>
-                <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
-                <img id="filterIcon" src="images/filter.svg" alt="filterIcon">
+                <a href="addStation.php" id="addStation" class="icon"></a>
+                <select class="form-select w-50" aria-label="Default select example" name="stationStatus" id='statusFilter'>
+                    <option selected value="-1">בחר סטטוס</option>
+                </select>
+                <section id="searchArea">
+            <img id="searchIcon" src="images/search.png" alt="searchIcon">
+            <input type="search" class="form-control roundInput" id="search" placeholder="חפש תחנה">
             </div>
             <h1 class="d-flex justify-content-center">stations list</h1>
             <div class="d-flex flex-wrap mt-2 gap-3">
