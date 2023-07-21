@@ -1,7 +1,6 @@
 <?php
 include "db.php";
 session_start();
-
 if (empty($_SESSION["user_id"])) {
     header('Location: login.php');
 }
@@ -66,6 +65,11 @@ if (!empty($_GET["book_id"])) {
                         ?>
                         <?php echo '<img src="' . $row['img'] . '" alt="angel">'; ?>
                         <?php echo '<a id="editIcon" href="addBook.php?book_id='.$row['book_id'].'"></a>';?>
+                        <?php 
+                            if($_SESSION["user_type"] == 'librarian'){
+                                echo '<a id="deleteIcon" href="deleteBook.php?book_id="'.$row['book_id'].'"></a>';
+                            }
+                        ?>
                     </section>
                     <section id="abstractAreaDesktop" class="d-flex flex-column align-items-end">
                         <h3>:תקציר</h3>
@@ -103,7 +107,7 @@ if (!empty($_GET["book_id"])) {
                                 echo '<a id="reserveIcon" href="#"></a>';
                             } 
                             if($_SESSION["user_type"] == 'librarian'){
-                                echo '<a id="deleteIcon" href="deleteBook.php?book_id="'.$row['book_id'].'"></a>';
+                                echo "<a id='deleteIcon' href='deleteBook.php?book_id=".$row['book_id']."'></a>";
                             }
                             echo '</div>';
                         ?>

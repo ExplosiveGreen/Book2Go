@@ -5,7 +5,7 @@ session_start();
 if (empty($_SESSION["user_id"])) {
     header('Location: login.php');
 }
-if (empty($_SESSION["user_type"]!="librarian")){
+if ($_SESSION["user_type"]!="librarian"){
     header('location: index.php');
 }
 if (!empty($_GET["station_id"])) {
@@ -53,117 +53,16 @@ if (!empty($_GET["station_id"])) {
             <section id="wrapper" class="align-items-center d-flex">
                 <h1>פרטי התחנה</h1>
                 <section id="stationDetails" class="d-flex">
-                    <section id="imageAreaMobile" class="align-items-center">
+                    <section class="flex-column d-flex align-items-center justify-content-center pr-2">
                         <?php
-                        if($_SESSION["user_type"] == 'reader'){
-                            echo '<a id="reserveIcon" href="#"></a>';
-                        } 
-                        ?>
-                        <?php echo '<img src="' . $row['img'] . '" alt="angel">'; ?>
-                        <?php echo '<a id="editIcon" href="addBook.php?book_id='.$row['book_id'].'"></a>';?>
-                    </section>
-                    <section id="abstractAreaDesktop" class="d-flex flex-column align-items-end">
-                        <h3>:תקציר</h3>
-                        <?php echo '<p class="textRight">' . $row['abstract'] . '</p>'; ?>
-                    </section>
-                    <section id="nameAreaMobile" class="flex-column d-flex align-items-center justify-content-center pr-2">
-                        <?php
-                        echo '<h3>' . $row['book_name'] . '</h3>';
-                        echo '<h4>' . $row['author'] . '</h4>';
-                        ?>
-                        <!-- <h3>מלאכים</h3>
-                        <h4>ל. א. וות'רלי</h4>
-                        <section class="d-flex flex-row gap-2">
-                            <span>
-                                (27
-                                דירוגים)
-                                5 &nbsp;
-                                ספרים
-                            </span>
-                            <div>
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                            </div>
-                        </section> -->
-                    </section>
-                    <section id="imageAreaDesktop">
-                        <?php echo '<img src="' . $row['img'] . '" alt="angel">'; ?>
-                        <?php 
-                            echo '<div class="d-flex flex-column gap-2">';
-                            echo '<a id="editIcon" href="addBook.php?book_id='.$row['book_id'].'"></a>';
-                            if($_SESSION["user_type"] == 'reader'){
-                                echo '<a id="reserveIcon" href="#"></a>';
-                            } 
-                            echo '</div>';
+                        echo '<h3>' . $row['station_name'] . '</h3>';
+                        echo '<h4>' . $row['location'] . '</h4>';
+                        echo '<h5 bs-station="' . $row['station_status_id'] . '"></h5>';
                         ?>
                     </section>
-                </section>
-                <section id="tabsSection">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#bookInfo" role="tab"
-                                aria-controls="bookInfo" aria-selected="false">עוד על הספר</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#abstractAreaMobile" role="tab"
-                                aria-controls="abstractAreaMobile" aria-selected="true">תקציר</a>
-                        </li>
-                    </ul>
-                    <section class="tab-content">
-                        <section id="bookInfo" role="tabpanel" aria-labelledby="bookInfoTab" class="tab-pane fade">
-                            <section class="d-flex flex-column alignHebrewEnd">
-                                <?php
-                                echo '<span>' . $row['translate'] . ':תרגום</span>';
-                                echo '<span>' . $row['publisher'] . ':הוצאה</span>';
-                                echo '<span>' . $row['publish_date'] . ':תאריך הוצאה</span>';
-                                echo '<span bs-category="' . $row['category_id'] . '"> :קטגוריה</span>';
-                                echo '<span>' . $availability . ':זמינות</span>';
-                                echo '<span bs-condition="' . $row['condition_id'] . '"> :מצב</span>';
-                                ?>
-                            </section>
-                        </section>
-                        <section role="tabpanel" aria-labelledby="abstractTab" id="abstractAreaMobile"
-                            class="tab-pane fade show active">
-                            <section class="d-flex flex-column align-items-end">
-                                <?php echo '<p class="textRight">' . $row['abstract'] . '</p>'; ?>
-                            </section>
-                        </section>
-                    </section>
-                </section>
-                <section id="bookMeta" class="w-100 d-flex flex-row justify-content-between">
-                    <section class="w30 p-3 d-flex flex-column align-items-end alignHebrewEnd">
-                        <?php
-                        echo '<span>תרגום: ' . $row['translate'] . '</span>';
-                        echo '<span>הוצאה: ' . $row['publisher'] . '</span>';
-                        echo '<span>תאריך הוצאה: ' . $row['publish_date'] . '</span>';
-                        echo '<span bs-category="' . $row['category_id'] . '">קטגוריה: </span>';
-                        echo '<span>זמינות: ' . $availability . '</span>';
-                        echo '<span bs-condition="' . $row['condition_id'] . '">מצב: </span>';
-                        ?>
-                    </section>
-                    <section class="flex-column d-flex align-items-center justify-content-center pr-4">
-                        <?php
-                        echo '<h3>' . $row['book_name'] . '</h3>';
-                        echo '<h4>' . $row['author'] . '</h4>';
-                        ?>
-                        <!-- <section class="d-flex flex-row gap-2">
-                            <span>
-                                (27
-                                דירוגים)
-                                5 &nbsp;
-                                ספרים
-                            </span>
-                            <div>
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                                <img src="images/rating.svg">
-                            </div>
-                        </section> -->
+                    <section class="d-flex gap-2">
+                    <?php echo '<img src="' . $row['station_img'] . '" alt="'.$row['station_img'].'">'; ?>
+                    <?php echo '<a id="editIcon" href="addStation.php?station_id='.$row['station_id'].'"></a>';?>
                     </section>
                 </section>
             </section>

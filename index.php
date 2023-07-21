@@ -41,7 +41,6 @@ if (!$result) {
         <section id="wrapper" class="w-100">
             <div id="actionArea" class="d-flex flex-row gap-2">
                 <a href="addBook.php" id="addBook" class="icon"></a>
-                <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon" class="icon">
                 <!-- <img id="filterIcon" src="images/filter.svg" alt="filterIcon"> -->
                 <!-- add select to category -->
                 <select class="form-select w-50" aria-label="Default select example" name="category" id="catFilter">

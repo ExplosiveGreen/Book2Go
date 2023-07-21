@@ -71,7 +71,7 @@ header img {
     background-size: contain;
     background-repeat: no-repeat;
 }
-#addBook{
+#addBook, #addStation{
     background-image: url(../images/add.svg);
     width: 24px;
     height: 24px;
@@ -87,6 +87,13 @@ header img {
 }
 #editIcon{
     background-image: url(../images/edit.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
+#deleteIcon{
+    background-image: url(../images/delete.svg);
     background-size: contain;
     background-repeat: no-repeat;
     width: 24px;

@@ -53,6 +53,12 @@ fetch('data/stations_status.json')
 .then(response => response.json())
 .then(data => {
     data.forEach(category => {
+        if(document.getElementsByName(`stationStatus`)[0]){
+            const option = document.createElement('option');
+            option.value = category['status_id'];
+            option.innerText = category['status_name'];
+            document.getElementsByName(`stationStatus`)[0].appendChild(option);
+        }
         document.querySelectorAll(`*[bs-station="${category['status_id']}"]`)
         .forEach(card => card.innerText = card.innerText + category['status_name']);
     });
@@ -97,6 +103,23 @@ form && form.addEventListener("submit", function(event) {
     if(selectFlag) return;
     form.submit();
 });
+
+const stationForm = document.getElementById("stationForm");
+
+stationForm && stationForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const selects = document.getElementsByClassName("form-select");
+    const errorContainer = document.getElementById("publicationDateError");
+    let selectFlag = false;
+    for( let i = 0; i < selects.length; i++){
+        if(selects[i].value === "-1" && selects[i].disabled === false){
+            errorContainer.innerHTML = errorContainer.innerHTML + `<span>${selects[i].name} is required</span>`;
+            selectFlag = true;
+        }
+    }
+    if(selectFlag) return;
+    form.submit();
+});
 document.getElementById("catFilter").onchange=function (e){
     document.querySelectorAll("a.card").forEach(function(varCard){
         console.log(!varCard.querySelector("p[bs-category='"+e.target.value+"']"))
@@ -112,6 +135,17 @@ function openImagePicker() {
 
 function setImage(imagePath) {
     var selectedImage = document.getElementById('bookImage');
+    selectedImage.value = imagePath;
+    var previewImage = document.getElementById('previewImage');
+    previewImage.src = imagePath;
+    previewImage.classList.remove('hidden');
+}
+function openImagePickerStations() {
+    window.open('image_picker-stations.php', 'Image Picker', 'width=800,height=600');
+}
+
+function setImage(imagePath) {
+    var selectedImage = document.getElementById('stationImage');
     selectedImage.value = imagePath;
     var previewImage = document.getElementById('previewImage');
     previewImage.src = imagePath;

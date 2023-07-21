@@ -31,7 +31,6 @@ if(!empty($_GET["book_id"])) {
     mysqli_free_result($result);
 }
 if(isset($_POST["condition"]) && !empty($_POST["condition"] > 0)) {
-    echo var_dump($_POST);
     $book_id = $_POST["book_id"] ? $_POST["book_id"] : $data['book_id'];
     $book_name = $_POST["bookName"] ? $_POST["bookName"] : $data['book_name'];
     $author = $_POST["authorName"] ? $_POST["authorName"] : $data['author'];
@@ -47,7 +46,6 @@ if(isset($_POST["condition"]) && !empty($_POST["condition"] > 0)) {
     }else{
         $query = "INSERT INTO tbl_218_books (book_name, author, abstract, translate, publisher, publish_date, category_id, condition_id,img) VALUES ('".$book_name."','".$author."','".$abstract."','".$translate."','".$publisher."', '".$publish_date."', '".$category_id."', '".$condition_id."','".$img."')";
     }
-    echo $query;
     $result = mysqli_query($connection, $query);
     if($result) {
       header("Location: index.php");

@@ -41,7 +41,7 @@ if (!$result) {
     <main class="w-100 d-flex">
         <section id="wrapper" class="w-100">
             <div id="actionArea" class="d-flex flex-row gap-2">
-                <a href="addBook.php" id="addBook"></a>
+                <a href="addStation.php" id="addStation"></a>
                 <img id="deleteIcon" src="images/delete.svg" alt="deleteIcon">
                 <img id="filterIcon" src="images/filter.svg" alt="filterIcon">
             </div>
